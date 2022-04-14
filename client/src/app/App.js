@@ -8,13 +8,15 @@ import Login from '../components/Login';
 import { getTokenFromUrl } from '../util/spotify';
 import { useStateValue } from '../contexts/StateProvider';
 
-const spotify = new SpotifyWebApi();
+const _spotify = new SpotifyWebApi();
 
 function App() {
 	// const [ token, setToken ] = useState(null);
-	const [ { user, token }, dispatch ] = useStateValue();
+	const [ { user, token, spotify }, dispatch ] = useStateValue();
 
 	useEffect(() => {
+		dispatch({ type: 'SET_SPOTIFY', spotify: _spotify });
+
 		const hash = getTokenFromUrl();
 		const _token = hash.access_token;
 		window.location.hash = ''; // don't want the token to sit in the URL for security reasons
@@ -40,6 +42,7 @@ function App() {
 	}, []);
 	console.log('>>user STATE', user);
 	console.log('>>token STATE', token);
+	console.log('>>spotify STATE', spotify);
 
 	return <div className="App">{token ? <h1>Logged In!</h1> : <Login />}</div>;
 }

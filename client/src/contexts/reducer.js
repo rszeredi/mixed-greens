@@ -1,6 +1,8 @@
 export const initialState = {
+	spotify: null,
 	user: null,
 	// TODO: remove after debugging!
+	// token: null,
 	token:
 		'BQDNOoeGLZkuF9pXzY6jzJxC5Zr5C9sCIsYmU61sd4JYojmyEGnKZ-9uJj2de7Xl3xmJIPR4gUW22tIc3bDn5Vu60wNM3ToWIROZa-ORE2zjimKdBbaqiyJUDHz32lhbPEDW-scG5Znquv_xgIm16sNoD9JLnbaOchZRzyR5eWuQzftWk1NtDuSazDBc35AKO_JYoCnITExOLCAElloOJw',
 	seeds: [],
@@ -13,6 +15,11 @@ const reducer = (state, action) => {
 	console.log(action); // very useful for debugging!
 
 	switch (action.type) {
+		case 'SET_SPOTIFY':
+			return {
+				...state,
+				spotify: action.spotify
+			};
 		case 'SET_USER':
 			return {
 				...state,
