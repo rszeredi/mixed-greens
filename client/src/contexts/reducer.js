@@ -1,6 +1,8 @@
 export const initialState = {
 	user: null,
-	token: null,
+	// TODO: remove after debugging!
+	token:
+		'BQDNOoeGLZkuF9pXzY6jzJxC5Zr5C9sCIsYmU61sd4JYojmyEGnKZ-9uJj2de7Xl3xmJIPR4gUW22tIc3bDn5Vu60wNM3ToWIROZa-ORE2zjimKdBbaqiyJUDHz32lhbPEDW-scG5Znquv_xgIm16sNoD9JLnbaOchZRzyR5eWuQzftWk1NtDuSazDBc35AKO_JYoCnITExOLCAElloOJw',
 	seeds: [],
 	playlist: null,
 	playing: false,
