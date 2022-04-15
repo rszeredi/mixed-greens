@@ -17,11 +17,15 @@ function App() {
 	console.log('_spotify', _spotify);
 
 	useEffect(() => {
-		dispatch({ type: 'SET_SPOTIFY', spotify: _spotify });
-
 		const hash = getTokenFromUrl();
 		const _token = hash.access_token;
 		window.location.hash = ''; // don't want the token to sit in the URL for security reasons
+
+		// TODO: remove: for debugging - check if we already hard-coded a token
+		if (token) {
+			_spotify.setAccessToken(token);
+			// console.log('getAccessToken', _spotify.getAccessToken());
+		}
 
 		if (_token) {
 			// setToken(_token); // move this to the state provider!
@@ -41,6 +45,8 @@ function App() {
 					});
 				});
 		}
+
+		dispatch({ type: 'SET_SPOTIFY', spotify: _spotify });
 	}, []);
 	console.log('>>user STATE', user);
 	console.log('>>token STATE', token);
