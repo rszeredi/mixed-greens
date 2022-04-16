@@ -2,9 +2,9 @@ export const initialState = {
 	spotify: null,
 	user: null,
 	// TODO: remove after debugging!
-	// token: null,
-	token:
-		'BQD56-QiVE6c4ifoERJhEPIjbEksAHkHR06DlNfXZbO4GOBYK0a7eeGHtsaOkEMTihkNRqp1bjKbe3_Y-Ht_pHTGlHJkHPbtE7LN3mKNYwXd75QOZ7mFSHgEBiQRRY2wBcCrePwXE-D0JVCxFZjoFyLnE0u1Njw1DTHVCnQYZMpMdcgGV1ynC6blmajQ2tVHiHKJLIGPPBx2j5a9Srwbjg',
+	token: null,
+	// token:
+	// 	'BQA2fwzreI1Fn08iEGomWxlz0i8LkwIKiVlhcJsjcK9BQvC4fHK49Wur8jBdO10EfYnsSwTIzgrrSXET56Oy5H7cMhPpv4LCewrPDW-e9USjWMIQe9ufUzxw1V7olcSldTXt-_M45vR5l9SsslyBYI_tgu33AHXSQqMHiGdBF9G2H6KDuZUv0QSQyclWJBNrSAqPvg',
 	seeds: [],
 	playlist: [],
 	playing: false,

@@ -25,6 +25,24 @@ function App() {
 		if (token) {
 			_spotify.setAccessToken(token);
 			// console.log('getAccessToken', _spotify.getAccessToken());
+			console.log('>>user222');
+			_spotify
+				.getMe() // returns a promise
+				.then(
+					(user) => {
+						console.log('>>user222', user);
+						dispatch({
+							type: 'SET_USER',
+							user: user
+						});
+					},
+					(err) => {
+						console.log('>>user222 error with getme:', err);
+					}
+				)
+				.catch((err) => {
+					console.log('>>user222 error with getme:', err);
+				});
 		}
 
 		if (_token) {
@@ -43,6 +61,9 @@ function App() {
 						type: 'SET_USER',
 						user: user
 					});
+				})
+				.catch((err) => {
+					console.log('error with getme:', err);
 				});
 		}
 
