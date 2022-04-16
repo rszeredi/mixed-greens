@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Form } from 'react-bootstrap';
 
 import { useStateValue } from '../contexts/StateProvider';
-import { parseArtistsFromSearch } from '../util/spotifySearchUtils';
+import { parseArtistsFromSearch, getRecommendations } from '../util/spotifyUtils';
 
 import './SearchBar.css';
 
@@ -33,9 +33,19 @@ function SearchBar() {
 		setSearch(e.target.value);
 	};
 
-	const handleSelect = (id) => {
-		dispatch({ type: 'ADD_TO_SEEDS', newSeed: id });
+	const handleSelect = (artist) => {
+		dispatch({ type: 'ADD_TO_SEEDS', newSeed: artist });
 		console.log('seeds', seeds);
+		setSearchResults([]);
+		setSearch([]);
+	};
+
+	const handleClearSeeds = () => {
+		dispatch({ type: 'CLEAR_SEEDS' });
+	};
+
+	const generatePlaylist = () => {
+		getRecommendations(spotify, Array.from(seeds).map((i) => i.id));
 	};
 
 	const dropdownItems = searchResults.map((artist) => (
@@ -51,6 +61,8 @@ function SearchBar() {
 		/>
 	));
 
+	const seedItems = () => Array.from(seeds).map((item) => <div key={item.id}>{item.name}</div>);
+
 	return (
 		<Container className="d-flex flex-column py-2">
 			<div className={`dropdown ${searchResults.length ? 'is-active' : ''}`}>
@@ -64,13 +76,21 @@ function SearchBar() {
 					<div className="dropdown-content">{dropdownItems}</div>
 				</div>
 			</div>
+			<a className="btn btn-warning mt-5" onClick={handleClearSeeds}>
+				Clear Seeds
+			</a>
+
+			{seeds && <div>{seedItems()}</div>}
+			<a className="btn btn-success mt-5" onClick={generatePlaylist}>
+				Generate Playlist!
+			</a>
 		</Container>
 	);
 }
 
 function SearchResult({ name, imageUrl, id, handleSelect }) {
 	const handleClick = () => {
-		handleSelect(id);
+		handleSelect({ id, name, imageUrl });
 	};
 
 	return (

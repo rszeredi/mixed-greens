@@ -2,9 +2,9 @@ export const initialState = {
 	spotify: null,
 	user: null,
 	// TODO: remove after debugging!
-	// token: null,
+	token: null,
 	token:
-		'BQCZszHNZA957P796R2XtbfubPJPELqxmgwk5K4YBf6GtG2N8ulEIE8iAwPeceBaXLSBwCVRWJ5P9ufkpHMsNkVQXnq4cPxpcmKP0_Rbm-M8L8TYooU5mVOgTY8xOf3VOAHMlN6-fO97oUEH-MXeS9tB1e9GxX2eHS-qu0Zf6lAn7Z9jSc-xnTS71f0LnwcP4X75vYBjC1Vud4R_NTlxWw',
+		'BQCUUbxoDFnUvW8kdA8EzV6-KtQv1cWXvyJf9OeoCWRXt9h4CwS3qJ5nGlbyynTx0xSzPZU4iDe8t80AMnpAHvU-cJcWWhBA04jDwaZMTsUHnjXqBi_oRRVDloejstyJaqJ-m5soPu9m-JqwnkDREPv60VFBho7VELuh6J0qdeBK_VY8zd1-dYt4SdVQqVi6PQbS8TVGQDgHJpbOMgfhpA',
 	seeds: new Set(),
 	playlist: null,
 	playing: false,
@@ -34,6 +34,12 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				seeds: new Set([ ...Array.from(state.seeds), action.newSeed ])
+			};
+
+		case 'CLEAR_SEEDS':
+			return {
+				...state,
+				seeds: new Set()
 			};
 		default:
 			return state;
