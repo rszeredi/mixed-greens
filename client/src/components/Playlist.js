@@ -9,15 +9,27 @@ function Playlist() {
 	const [ { playlist }, dispatch ] = useStateValue();
 	const tracks = () => playlist.map((track) => <Track {...track} key={track.id} />);
 
-	return <div className="Playlist flex-grow-1 my-2">{playlist.length > 0 && tracks()}</div>;
+	return (
+		<div className="Playlist flex-grow-1 my-2">
+			<table className="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">Title</th>
+						<th scope="col">Artist</th>
+					</tr>
+				</thead>
+				<tbody>{playlist.length > 0 && tracks()}</tbody>
+			</table>
+		</div>
+	);
 }
 
 function Track({ trackName, artist }) {
 	return (
-		<Container className="d-flex">
-			<div>{trackName}</div>
-			<div>{artist}</div>
-		</Container>
+		<tr>
+			<td>{trackName}</td>
+			<td>{artist}</td>
+		</tr>
 	);
 }
 
