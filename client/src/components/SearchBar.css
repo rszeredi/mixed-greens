@@ -1,0 +1,21 @@
+.SearchBar-dropdown-menu {
+	width: 100%;
+	overflow: scroll;
+	height: 250px;
+}
+
+.SearchBar-dropdown-item {
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.SearchBar-dropdown-item:active {
+	background-color: darkgray;
+}
+
+.SearchBar-dropdown-item img {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	object-fit: cover;
+}

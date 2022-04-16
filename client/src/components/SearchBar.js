@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Form } from 'react-bootstrap';
 
 import { useStateValue } from '../contexts/StateProvider';
+import { parseArtistsFromSearch } from '../util/spotifySearchUtils';
 
 import './SearchBar.css';
 
@@ -19,22 +20,10 @@ function SearchBar() {
 
 			searchTimeout = setTimeout(() => {
 				console.log('searching: ', search);
-				spotify.searchTracks(search).then((res) => {
+				spotify.searchArtists(search).then((res) => {
 					console.log(res);
 
-					const _searchResults = res.body.tracks.items.map((track) => {
-						const smallesAlbumImage = track.album.images.reduce((smallest, image) => {
-							if (image.height < smallest.height) return image;
-							else return smallest;
-						}, track.album.images[0]);
-
-						return {
-							artist: track.artists[0].name,
-							title: track.name,
-							uri: track.uri,
-							albumUrl: smallesAlbumImage.url
-						};
-					});
+					const _searchResults = parseArtistsFromSearch(res);
 					setSearchResults(_searchResults);
 				});
 			}, 500);
@@ -46,15 +35,30 @@ function SearchBar() {
 		setSearch(e.target.value);
 	};
 
-	// console.log('searchResults', searchResults);
+	const dropdownItems = searchResults.map((artist) => (
+		// <a href="#" className="dropdown-item pb-3">
+		// 	{artist.name}
+		// </a>
+		<div className="SearchBar-dropdown-item dropdown-item py-2 d-flex align-items-center">
+			<img src={artist.imageUrl} />
+			<div className="m-3">{artist.name}</div>
+		</div>
+	));
+
+	console.log('searchResults', searchResults);
 	return (
 		<Container className="d-flex flex-column py-2">
-			<Form.Control
-				type="search"
-				placeholder="Search for a song, artist, or genre..."
-				value={search}
-				onChange={handleChange}
-			/>
+			<div className={`dropdown ${searchResults.length ? 'is-active' : ''}`}>
+				<Form.Control
+					type="search"
+					placeholder="Search for a song, artist, or genre..."
+					value={search}
+					onChange={handleChange}
+				/>
+				<div className="SearchBar-dropdown-menu dropdown-menu p-0" role="menu">
+					<div className="dropdown-content">{dropdownItems}</div>
+				</div>
+			</div>
 		</Container>
 	);
 }
