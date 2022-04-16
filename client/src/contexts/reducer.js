@@ -6,7 +6,7 @@ export const initialState = {
 	token:
 		'BQA9WcryyCsEmKPmjuHSBho-jbY5MY6mxx4VtL0tQsA0kBPmXm50tL4pRjuwghBryWsi_GEO7X1mgYJbXNX48mPeQQqE1nxcfUdyd32oEYM3gSlQHztN7_UIEGyI68euV1DCa3-aG3lnFI4g8NydgW2IrLvwVMwfs1oigEfdaitLwTu1QXzclVfKNTFpbl_FB0F1VDIIqp5GvuGRJ_d8ew',
 	seeds: new Set(),
-	playlist: null,
+	playlist: [],
 	playing: false,
 	item: null
 };

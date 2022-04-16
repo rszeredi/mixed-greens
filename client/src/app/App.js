@@ -13,7 +13,7 @@ const _spotify = new SpotifyWebApi();
 
 function App() {
 	// const [ token, setToken ] = useState(null);
-	const [ { user, token, spotify }, dispatch ] = useStateValue();
+	const [ { spotify, user, token }, dispatch ] = useStateValue();
 	console.log('_spotify', _spotify);
 
 	useEffect(() => {

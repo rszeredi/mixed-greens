@@ -34,6 +34,7 @@ export function parseArtistsFromSearch(res) {
 export function parseRecommendations(recommendations) {
 	return recommendations.tracks.map((track) => ({
 		artist: track.artists[0].name,
-		trackName: track.name
+		trackName: track.name,
+		id: track.id
 	}));
 }
