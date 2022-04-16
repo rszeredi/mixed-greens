@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Form } from 'react-bootstrap';
 
 import { useStateValue } from '../contexts/StateProvider';
-import { parseArtistsFromSearch, getRecommendations } from '../util/spotifyUtils';
+import { parseArtistsFromSearch } from '../util/spotifyUtils';
 
 import './SearchBar.css';
 
@@ -16,10 +16,10 @@ function SearchBar() {
 	useEffect(
 		() => {
 			clearTimeout(searchTimeout);
-			if (!search) return setSearchResults([]);
+			if (!search.length) return setSearchResults([]);
 
 			searchTimeout = setTimeout(() => {
-				console.log('searching: ', search);
+				console.log(`searching: ${search}`);
 				spotify.searchArtists(search).then((res) => {
 					const _searchResults = parseArtistsFromSearch(res);
 					setSearchResults(_searchResults);
@@ -40,14 +40,6 @@ function SearchBar() {
 		setSearch([]);
 	};
 
-	const handleClearSeeds = () => {
-		dispatch({ type: 'CLEAR_SEEDS' });
-	};
-
-	const generatePlaylist = () => {
-		getRecommendations(spotify, Array.from(seeds).map((i) => i.id));
-	};
-
 	const dropdownItems = searchResults.map((artist) => (
 		// <a href="#" className="dropdown-item pb-3">
 		// 	{artist.name}
@@ -60,8 +52,6 @@ function SearchBar() {
 			handleSelect={handleSelect}
 		/>
 	));
-
-	const seedItems = () => Array.from(seeds).map((item) => <div key={item.id}>{item.name}</div>);
 
 	return (
 		<Container className="d-flex flex-column py-2">
@@ -76,14 +66,6 @@ function SearchBar() {
 					<div className="dropdown-content">{dropdownItems}</div>
 				</div>
 			</div>
-			<a className="btn btn-warning mt-5" onClick={handleClearSeeds}>
-				Clear Seeds
-			</a>
-
-			{seeds && <div>{seedItems()}</div>}
-			<a className="btn btn-success mt-5" onClick={generatePlaylist}>
-				Generate Playlist!
-			</a>
 		</Container>
 	);
 }

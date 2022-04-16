@@ -31,27 +31,9 @@ export function parseArtistsFromSearch(res) {
 	});
 }
 
-export function getRecommendations(spotifyApi, seedsArtists) {
-	spotifyApi
-		.getRecommendations({
-			min_energy: 0.4,
-			seed_artists: seedsArtists,
-			min_popularity: 50
-		})
-		.then(
-			function(data) {
-				let recommendations = parseRecommendations(data.body);
-				console.log('recs:', recommendations);
-			},
-			function(err) {
-				console.log('Something went wrong!', err);
-			}
-		);
-}
-
-function parseRecommendations(recommendations) {
+export function parseRecommendations(recommendations) {
 	return recommendations.tracks.map((track) => ({
-		artists: track.artists[0].name,
+		artist: track.artists[0].name,
 		trackName: track.name
 	}));
 }

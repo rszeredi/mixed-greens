@@ -4,7 +4,7 @@ export const initialState = {
 	// TODO: remove after debugging!
 	token: null,
 	token:
-		'BQCUUbxoDFnUvW8kdA8EzV6-KtQv1cWXvyJf9OeoCWRXt9h4CwS3qJ5nGlbyynTx0xSzPZU4iDe8t80AMnpAHvU-cJcWWhBA04jDwaZMTsUHnjXqBi_oRRVDloejstyJaqJ-m5soPu9m-JqwnkDREPv60VFBho7VELuh6J0qdeBK_VY8zd1-dYt4SdVQqVi6PQbS8TVGQDgHJpbOMgfhpA',
+		'BQA9WcryyCsEmKPmjuHSBho-jbY5MY6mxx4VtL0tQsA0kBPmXm50tL4pRjuwghBryWsi_GEO7X1mgYJbXNX48mPeQQqE1nxcfUdyd32oEYM3gSlQHztN7_UIEGyI68euV1DCa3-aG3lnFI4g8NydgW2IrLvwVMwfs1oigEfdaitLwTu1QXzclVfKNTFpbl_FB0F1VDIIqp5GvuGRJ_d8ew',
 	seeds: new Set(),
 	playlist: null,
 	playing: false,
@@ -40,6 +40,12 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				seeds: new Set()
+			};
+
+		case 'SET_PLAYLIST':
+			return {
+				...state,
+				playlist: action.playlist
 			};
 		default:
 			return state;
