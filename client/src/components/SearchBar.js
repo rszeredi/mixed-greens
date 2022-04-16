@@ -9,7 +9,7 @@ import './SearchBar.css';
 let searchTimeout;
 
 function SearchBar() {
-	const [ { spotify }, reducer ] = useStateValue();
+	const [ { spotify, seeds }, dispatch ] = useStateValue();
 	const [ search, setSearch ] = useState(''); // todo: should these be moved to state provider?
 	const [ searchResults, setSearchResults ] = useState([]);
 
@@ -21,8 +21,6 @@ function SearchBar() {
 			searchTimeout = setTimeout(() => {
 				console.log('searching: ', search);
 				spotify.searchArtists(search).then((res) => {
-					console.log(res);
-
 					const _searchResults = parseArtistsFromSearch(res);
 					setSearchResults(_searchResults);
 				});
@@ -35,17 +33,24 @@ function SearchBar() {
 		setSearch(e.target.value);
 	};
 
+	const handleSelect = (id) => {
+		dispatch({ type: 'ADD_TO_SEEDS', newSeed: id });
+		console.log('seeds', seeds);
+	};
+
 	const dropdownItems = searchResults.map((artist) => (
 		// <a href="#" className="dropdown-item pb-3">
 		// 	{artist.name}
 		// </a>
-		<div className="SearchBar-dropdown-item dropdown-item py-2 d-flex align-items-center">
-			<img src={artist.imageUrl} />
-			<div className="m-3">{artist.name}</div>
-		</div>
+		<SearchResult
+			name={artist.name}
+			imageUrl={artist.imageUrl}
+			key={artist.id}
+			id={artist.id}
+			handleSelect={handleSelect}
+		/>
 	));
 
-	console.log('searchResults', searchResults);
 	return (
 		<Container className="d-flex flex-column py-2">
 			<div className={`dropdown ${searchResults.length ? 'is-active' : ''}`}>
@@ -60,6 +65,22 @@ function SearchBar() {
 				</div>
 			</div>
 		</Container>
+	);
+}
+
+function SearchResult({ name, imageUrl, id, handleSelect }) {
+	const handleClick = () => {
+		handleSelect(id);
+	};
+
+	return (
+		<div
+			className="SearchBar-dropdown-item dropdown-item py-2 d-flex align-items-center"
+			onClick={handleClick}
+		>
+			<img src={imageUrl} />
+			<div className="m-3">{name}</div>
+		</div>
 	);
 }
 
