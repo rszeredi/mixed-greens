@@ -10,16 +10,18 @@ function Playlist() {
 	const tracks = () => playlist.map((track) => <Track {...track} key={track.id} />);
 
 	return (
-		<div className="Playlist flex-grow-1 my-2">
-			<table className="table table-striped">
-				<thead>
-					<tr>
-						<th scope="col">Title</th>
-						<th scope="col">Artist</th>
-					</tr>
-				</thead>
-				<tbody>{playlist.length > 0 && tracks()}</tbody>
-			</table>
+		<div className="Playlist flex-grow-1 my-2 align-items-center">
+			{playlist.length > 0 && (
+				<table className="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Title</th>
+							<th scope="col">Artist</th>
+						</tr>
+					</thead>
+					<tbody>{tracks()}</tbody>
+				</table>
+			)}
 		</div>
 	);
 }

@@ -54,7 +54,7 @@ function SearchBar() {
 	));
 
 	return (
-		<Container className="d-flex flex-column py-2">
+		<Container className="d-flex flex-column">
 			<div className={`dropdown ${searchResults.length ? 'is-active' : ''}`}>
 				<Form.Control
 					type="search"
@@ -77,7 +77,7 @@ function SearchResult({ name, imageUrl, id, handleSelect }) {
 
 	return (
 		<div
-			className="SearchBar-dropdown-item dropdown-item py-2 d-flex align-items-center"
+			className="SearchBar-dropdown-item dropdown-item d-flex align-items-center"
 			onClick={handleClick}
 		>
 			<img src={imageUrl} />

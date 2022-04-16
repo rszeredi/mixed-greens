@@ -2,10 +2,10 @@ export const initialState = {
 	spotify: null,
 	user: null,
 	// TODO: remove after debugging!
-	token: null,
+	// token: null,
 	token:
-		'BQA9WcryyCsEmKPmjuHSBho-jbY5MY6mxx4VtL0tQsA0kBPmXm50tL4pRjuwghBryWsi_GEO7X1mgYJbXNX48mPeQQqE1nxcfUdyd32oEYM3gSlQHztN7_UIEGyI68euV1DCa3-aG3lnFI4g8NydgW2IrLvwVMwfs1oigEfdaitLwTu1QXzclVfKNTFpbl_FB0F1VDIIqp5GvuGRJ_d8ew',
-	seeds: new Set(),
+		'BQD56-QiVE6c4ifoERJhEPIjbEksAHkHR06DlNfXZbO4GOBYK0a7eeGHtsaOkEMTihkNRqp1bjKbe3_Y-Ht_pHTGlHJkHPbtE7LN3mKNYwXd75QOZ7mFSHgEBiQRRY2wBcCrePwXE-D0JVCxFZjoFyLnE0u1Njw1DTHVCnQYZMpMdcgGV1ynC6blmajQ2tVHiHKJLIGPPBx2j5a9Srwbjg',
+	seeds: [],
 	playlist: [],
 	playing: false,
 	item: null
@@ -33,15 +33,22 @@ const reducer = (state, action) => {
 		case 'ADD_TO_SEEDS':
 			return {
 				...state,
-				seeds: new Set([ ...Array.from(state.seeds), action.newSeed ])
+				seeds: [ ...state.seeds, action.newSeed ]
 			};
 
 		case 'CLEAR_SEEDS':
 			return {
 				...state,
-				seeds: new Set()
+				seeds: []
 			};
 
+		case 'DELETE_SEED':
+			let newSeeds = [ ...state.seeds ].filter((i) => i.id != action.idToRemove); // do we actually need to create a copy?
+
+			return {
+				...state,
+				seeds: newSeeds
+			};
 		case 'SET_PLAYLIST':
 			return {
 				...state,
