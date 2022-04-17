@@ -1,25 +1,28 @@
-function parseTracksFromSearch(res) {
+function getSmallestImage(images) {
+	return images.reduce((smallest, image) => {
+		if (image.height < smallest.height) return image;
+		else return smallest;
+	}, images[0]);
+}
+
+export function parseTracksFromSearch(res) {
 	return res.body.tracks.items.map((track) => {
-		const smallesAlbumImage = track.album.images.reduce((smallest, image) => {
-			if (image.height < smallest.height) return image;
-			else return smallest;
-		}, track.album.images[0]);
+		const smallestAlbumImage = getSmallestImage(track.album.images);
 
 		return {
 			artist: track.artists[0].name,
-			title: track.name,
+			name: track.name,
 			uri: track.uri,
-			albumUrl: smallesAlbumImage.url
+			imageUrl: smallestAlbumImage.url,
+			id: track.id,
+			type: 'track'
 		};
 	});
 }
 
 export function parseArtistsFromSearch(res) {
 	return res.body.artists.items.map((artist) => {
-		const smallestArtistImage = artist.images.reduce((smallest, image) => {
-			if (image.height < smallest.height) return image;
-			else return smallest;
-		}, artist.images[0]);
+		const smallestArtistImage = getSmallestImage(artist.images);
 
 		return {
 			name: artist.name,

@@ -11,7 +11,6 @@ function Controls() {
 		() => {
 			if (playlist.length) {
 				setIsPlaying(true);
-				console.log('setIsPlaying(true)', isPlaying);
 			}
 		},
 		[ playlist ]

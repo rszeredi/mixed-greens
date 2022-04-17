@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Form } from 'react-bootstrap';
 
 import { useStateValue } from '../contexts/StateProvider';
-import { parseArtistsFromSearch, filterGenres } from '../util/spotifyUtils';
+import { parseArtistsFromSearch, filterGenres, parseTracksFromSearch } from '../util/spotifyUtils';
 
 import './SearchBar.css';
 
@@ -41,6 +41,15 @@ function SearchBar() {
 						setSearchResultsGenres(filteredGenres);
 					})
 					.catch((err) => console.error(err));
+
+				// search tracks
+				spotify
+					.searchTracks(search)
+					.then((res) => {
+						const _searchResultsTracks = parseTracksFromSearch(res);
+						setSearchResultsTracks(_searchResultsTracks);
+					})
+					.catch((err) => console.log(err));
 			}, 500);
 		},
 		[ search ]
@@ -51,12 +60,14 @@ function SearchBar() {
 			// combine search results
 			const maxSearchResults = Math.max(
 				searchResultsGenres.length,
-				searchResultsArtists.length
+				searchResultsArtists.length,
+				searchResultsTracks.length
 			);
 			let _searchResultsCombined = [];
 			for (let i = 0; i < maxSearchResults; i++) {
 				if (searchResultsGenres[i]) _searchResultsCombined.push(searchResultsGenres[i]);
 				if (searchResultsArtists[i]) _searchResultsCombined.push(searchResultsArtists[i]);
+				if (searchResultsTracks[i]) _searchResultsCombined.push(searchResultsTracks[i]);
 			}
 			setSearchResultsCombined(_searchResultsCombined);
 			console.log('_searchResultsCombined', _searchResultsCombined);
@@ -81,6 +92,7 @@ function SearchBar() {
 		// </a>
 		<SearchResult
 			name={item.name}
+			artist={item.type === 'track' ? item.artist : null}
 			imageUrl={item.imageUrl}
 			key={item.id}
 			id={item.id}
@@ -107,7 +119,7 @@ function SearchBar() {
 	);
 }
 
-function SearchResult({ name, imageUrl, id, handleSelect, type }) {
+function SearchResult({ name, artist, imageUrl, id, handleSelect, type }) {
 	const handleClick = () => {
 		handleSelect({ id, name, imageUrl, type });
 	};
@@ -118,14 +130,15 @@ function SearchResult({ name, imageUrl, id, handleSelect, type }) {
 			onClick={handleClick}
 		>
 			{imageUrl ? (
-				<img src={imageUrl} />
+				<img src={imageUrl} alt="Seed Image" />
 			) : (
 				<div className="SearchBar-genre-icon">
 					<i className="fa fa-solid fa-music" />
 				</div>
 			)}
 			<div className={`m-3 ${type === 'genre' ? 'SearchBar-dropdown-genre' : ''}`}>
-				{name}
+				<div>{name}</div>
+				{artist !== null && <div className="text-muted">{artist}</div>}
 			</div>
 		</div>
 	);

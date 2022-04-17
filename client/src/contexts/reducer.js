@@ -3,8 +3,8 @@ export const initialState = {
 	user: null,
 	// TODO: remove after debugging!
 	token: null,
-	// token:
-	// 'BQAVmMsAUkyGjcR6xmv3R1RaTn79rIhf9A4LCwWwaxixCO10JXgVOsLHjlbeg44N-xN8eURxm6yNUbSa5I6ZlEmkf86TVX1h3e7fTzd6QFDR_4veSAiKpYEv8hQjiLoBzZARXYl8btzMKMACaiYJVc9AaSPhQwEDqj4sjHgWGPNsPr0CzBEg0K8lSm9CIQuCxGZFJQ',
+	token:
+		'BQBKqW8t5U0--GWdNUmQRDvPmcmbKEMeyLkPGn2jgD0HoG5DZrwlTYec5bmMMzgpsfcrQuwXIWIgDQhTD7wnP8V3cLrmFTpsIL2qGcz8tN_yWyS7rEPP062JFlFg-EmW73UPL9ZNtPLGXRbucKgiWYKFooNvcr5H0ZyX4noyg2PDPiTqxL5_oR9p2ryRK86rKex85w',
 	seeds: [],
 	playlist: [],
 	playing: false,
@@ -43,7 +43,7 @@ const reducer = (state, action) => {
 			};
 
 		case 'DELETE_SEED':
-			let newSeeds = [ ...state.seeds ].filter((i) => i.id != action.idToRemove); // do we actually need to create a copy?
+			let newSeeds = [ ...state.seeds ].filter((i) => i.id !== action.idToRemove); // do we actually need to create a copy?
 
 			return {
 				...state,

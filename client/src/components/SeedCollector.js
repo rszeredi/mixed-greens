@@ -27,8 +27,8 @@ function SeedCollector() {
 				min_energy: 0.4,
 				seed_artists: seedArtists,
 				seed_genres: seedGenres,
-				min_popularity: 50,
-				target_popularity: 70
+				min_popularity: 50
+				// target_popularity: 70
 			})
 			.then(
 				(res) => {

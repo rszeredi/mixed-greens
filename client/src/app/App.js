@@ -14,7 +14,6 @@ const _spotify = new SpotifyWebApi();
 function App() {
 	// const [ token, setToken ] = useState(null);
 	const [ { spotify, user, token }, dispatch ] = useStateValue();
-	console.log('_spotify', _spotify);
 
 	useEffect(() => {
 		const hash = getTokenFromUrl();
@@ -23,25 +22,20 @@ function App() {
 
 		// TODO: remove: for debugging - check if we already hard-coded a token
 		if (token) {
+			console.log('>>Using provided token', token);
+
 			_spotify.setAccessToken(token);
-			// console.log('getAccessToken', _spotify.getAccessToken());
-			console.log('>>user222');
+
 			_spotify
 				.getMe() // returns a promise
-				.then(
-					(user) => {
-						console.log('>>user222', user);
-						dispatch({
-							type: 'SET_USER',
-							user: user
-						});
-					},
-					(err) => {
-						console.log('>>user222 error with getme:', err);
-					}
-				)
+				.then((user) => {
+					dispatch({
+						type: 'SET_USER',
+						user: user
+					});
+				})
 				.catch((err) => {
-					console.log('>>user222 error with getme:', err);
+					console.log('error with getme:', err);
 				});
 		}
 
@@ -56,7 +50,6 @@ function App() {
 			_spotify
 				.getMe() // returns a promise
 				.then((user) => {
-					console.log('>>user', user);
 					dispatch({
 						type: 'SET_USER',
 						user: user
@@ -69,9 +62,6 @@ function App() {
 
 		dispatch({ type: 'SET_SPOTIFY', spotify: _spotify });
 	}, []);
-	console.log('>>user STATE', user);
-	console.log('>>token STATE', token);
-	console.log('>>spotify STATE', spotify);
 
 	return <div className="App">{token ? <MixedGreensApp /> : <Login />}</div>;
 }
