@@ -4,7 +4,7 @@ export const initialState = {
 	// TODO: remove after debugging!
 	token: null,
 	// token:
-	// 	'BQA2fwzreI1Fn08iEGomWxlz0i8LkwIKiVlhcJsjcK9BQvC4fHK49Wur8jBdO10EfYnsSwTIzgrrSXET56Oy5H7cMhPpv4LCewrPDW-e9USjWMIQe9ufUzxw1V7olcSldTXt-_M45vR5l9SsslyBYI_tgu33AHXSQqMHiGdBF9G2H6KDuZUv0QSQyclWJBNrSAqPvg',
+	// 'BQAVmMsAUkyGjcR6xmv3R1RaTn79rIhf9A4LCwWwaxixCO10JXgVOsLHjlbeg44N-xN8eURxm6yNUbSa5I6ZlEmkf86TVX1h3e7fTzd6QFDR_4veSAiKpYEv8hQjiLoBzZARXYl8btzMKMACaiYJVc9AaSPhQwEDqj4sjHgWGPNsPr0CzBEg0K8lSm9CIQuCxGZFJQ',
 	seeds: [],
 	playlist: [],
 	playing: false,

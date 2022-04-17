@@ -25,16 +25,29 @@ export function parseArtistsFromSearch(res) {
 			name: artist.name,
 			id: artist.id,
 			uri: artist.uri,
-			imageUrl: smallestArtistImage ? smallestArtistImage.url : null
+			imageUrl: smallestArtistImage ? smallestArtistImage.url : null,
+			type: 'artist'
+
 			// imageUrl: smallestArtistImage?.url
 		};
 	});
+}
+
+export function filterGenres(res, search) {
+	return res.body.genres.filter((i) => i.toLowerCase().includes(search)).map((genre) => ({
+		name: genre.replace('-', ' '),
+		id: genre,
+		uri: null,
+		imageUrl: null,
+		type: 'genre'
+	}));
 }
 
 export function parseRecommendations(recommendations) {
 	return recommendations.tracks.map((track) => ({
 		artist: track.artists[0].name,
 		trackName: track.name,
-		id: track.id
+		id: track.id,
+		uri: track.uri
 	}));
 }

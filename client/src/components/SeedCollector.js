@@ -17,11 +17,18 @@ function SeedCollector() {
 	const generatePlaylist = () => {
 		if (!seeds.length) return;
 
+		const seedArtists = seeds.filter((s) => s.type === 'artist').map((s) => s.id);
+		const seedGenres = seeds.filter((s) => s.type === 'genre').map((s) => s.id);
+		console.log('seedArtists', seedArtists);
+		console.log('seedGenres', seedGenres);
+
 		spotify
 			.getRecommendations({
 				min_energy: 0.4,
-				seed_artists: Array.from(seeds).map((i) => i.id),
-				min_popularity: 50
+				seed_artists: seedArtists,
+				seed_genres: seedGenres,
+				min_popularity: 50,
+				target_popularity: 70
 			})
 			.then(
 				(res) => {
