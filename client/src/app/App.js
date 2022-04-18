@@ -8,60 +8,32 @@ import { getTokenFromUrl } from '../util/spotify';
 import { useStateValue } from '../contexts/StateProvider';
 import MixedGreensApp from '../components/MixedGreensApp';
 import Login from '../components/Login';
+import useAuth from '../hooks/useAuth';
 
 const _spotify = new SpotifyWebApi();
 
+const code = new URLSearchParams(window.location.search).get('code');
+
 function App() {
-	// const [ token, setToken ] = useState(null);
-	const [ { spotify, user, token }, dispatch ] = useStateValue();
+	const [ { token }, dispatch ] = useStateValue();
 
-	useEffect(() => {
-		const hash = getTokenFromUrl();
-		const _token = hash.access_token;
-		window.location.hash = ''; // don't want the token to sit in the URL for security reasons
+	const _accessToken = useAuth(code);
 
-		// TODO: remove: for debugging - check if we already hard-coded a token
-		if (token) {
-			console.log('>>Using provided token', token);
-
-			_spotify.setAccessToken(token);
-
-			_spotify
-				.getMe() // returns a promise
-				.then((user) => {
-					dispatch({
-						type: 'SET_USER',
-						user: user
-					});
-				})
-				.catch((err) => {
-					console.log('error with getme:', err);
+	useEffect(
+		() => {
+			if (_accessToken) {
+				dispatch({
+					type: 'SET_TOKEN',
+					token: _accessToken
 				});
-		}
 
-		if (_token) {
-			// setToken(_token); // move this to the state provider!
-			dispatch({
-				type: 'SET_TOKEN',
-				token: _token
-			});
+				_spotify.setAccessToken(_accessToken);
 
-			_spotify.setAccessToken(_token); // give the access token to the Spotify API
-			_spotify
-				.getMe() // returns a promise
-				.then((user) => {
-					dispatch({
-						type: 'SET_USER',
-						user: user
-					});
-				})
-				.catch((err) => {
-					console.log('error with getme:', err);
-				});
-		}
-
-		dispatch({ type: 'SET_SPOTIFY', spotify: _spotify });
-	}, []);
+				dispatch({ type: 'SET_SPOTIFY', spotify: _spotify });
+			}
+		},
+		[ _accessToken ]
+	);
 
 	return <div className="App">{token ? <MixedGreensApp /> : <Login />}</div>;
 }

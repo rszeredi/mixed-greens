@@ -3,8 +3,8 @@ export const initialState = {
 	user: null,
 	// TODO: remove after debugging!
 	token: null,
-	token:
-		'BQBDD6x6dnHREd7uS9he4nyrguSm7SDtN29hKD8SSORObC10O2HuveZQc93MeJgIWLgcctSbWh9Cbb0KXnh28ukW8knCQqixYyC6O0m6Hr1hQVT3fg3jmETEh972wI9_iRuUFtjbUCWDMkgmtWKA6Af_iARYjS2Baie6N9U4v2yg-YXCSD26HA8q4yJG1SjYU1BLsw',
+	// token:
+	// 	'BQBDD6x6dnHREd7uS9he4nyrguSm7SDtN29hKD8SSORObC10O2HuveZQc93MeJgIWLgcctSbWh9Cbb0KXnh28ukW8knCQqixYyC6O0m6Hr1hQVT3fg3jmETEh972wI9_iRuUFtjbUCWDMkgmtWKA6Af_iARYjS2Baie6N9U4v2yg-YXCSD26HA8q4yJG1SjYU1BLsw',
 	seeds: [],
 	playlist: [],
 	playingTrackNumber: 0,
