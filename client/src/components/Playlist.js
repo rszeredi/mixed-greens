@@ -9,10 +9,12 @@ function Playlist() {
 	const [ { playlist }, dispatch ] = useStateValue();
 	const tracks = () => playlist.map((track) => <Track {...track} key={track.id} />);
 
+	// flex-grow-1
 	return (
-		<div className="Playlist flex-grow-1 my-2 align-items-center">
+		<div className="Playlist my-1 align-items-center">
 			{playlist.length > 0 && (
-				<table className="table table-striped">
+				// <table className="Playlist-table table table-striped">
+				<table className="Playlist-table table">
 					<thead>
 						<tr>
 							<th scope="col">Title</th>

@@ -55,18 +55,22 @@ function SeedCollector() {
 		));
 	console.log('playlist STATE: ', playlist);
 	return (
-		<Container>
+		<Container className="SeedCollector d-flex flex-column justify-content-center align-items-center">
 			<SearchBar />
-			<Container className="d-flex justify-content-around align-items-center my-4">
-				{seeds && <div>{seedItems()}</div>}
+			<Container className="SeedCollector-seed-container d-flex justify-content-center align-items-center">
+				{seeds && seedItems()}
 			</Container>
-			<Container className="d-flex justify-content-around align-items-center my-4">
-				<button className="SeedCollector-btn btn btn-danger" onClick={handleClearSeeds}>
+			<Container className="d-flex justify-content-around align-items-center">
+				<button
+					className="SeedCollector-action-btn btn btn-danger"
+					onClick={handleClearSeeds}
+					disabled={!seeds.length ? true : false}
+				>
 					Clear Seeds
 				</button>
 
 				<button
-					className="SeedCollector-btn btn btn-success"
+					className="SeedCollector-action-btn btn btn-success"
 					onClick={generatePlaylist}
 					disabled={!seeds.length ? true : false}
 				>
@@ -82,8 +86,9 @@ function Seed({ label, id, deleteSeed }) {
 		deleteSeed(id);
 	};
 	return (
-		<button className="SeedCollector-btn btn btn-secondary btn-sm" onClick={handleClick}>
+		<button className="SeedCollector-seed-btn btn btn-secondary btn-sm" onClick={handleClick}>
 			{label}
+			<i class="fa fa-xmark" />
 		</button>
 	);
 }

@@ -1,21 +1,13 @@
 .Login {
-	background-color: black;
-	height: 100vh;
-	margin: auto;
-	display: flex;
-	flex-direction: column;
+	/* height: 100vh; */
+	margin: 2rem auto;
+	/* display: flex;
+	flex-direction: column; */
+	padding: 1rem;
 }
 
 .Login-btn.btn {
-	font-weight: 700;
+	/* font-weight: 700; */
 	padding: 0.6rem 2rem;
-}
-
-.Login-logo {
-	margin: 0 auto;
-	max-width: 600px;
-}
-
-.Login-logo img {
-	width: 100%;
+	background-color: #1db954;
 }

@@ -20,7 +20,7 @@ function Controls() {
 
 	// console.log('uri', playlist[0].uri);
 	return (
-		<div className="Controls-player">
+		<div className="Controls-player mt-3">
 			<SpotifyPlayer
 				token={token}
 				uris={!playlist.length ? [] : playlist.map((i) => i.uri)}
@@ -28,6 +28,13 @@ function Controls() {
 					if (!state.isPlaying) setIsPlaying(false);
 				}}
 				play={isPlaying}
+				styles={{
+					bgColor: '#191414 !important',
+					color: 'white',
+					trackNameColor: 'white',
+					trackArtistColor: '#6c757d',
+					sliderHandleColor: 'white'
+				}}
 			/>
 		</div>
 	);

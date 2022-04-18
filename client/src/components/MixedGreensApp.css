@@ -1,0 +1,27 @@
+.MixedGreensApp-heading {
+	color: white;
+	font-size: 3.5rem;
+	/* font-weight: bold; */
+}
+
+.Spotify-logo {
+	margin: 1rem auto;
+	max-width: 150px;
+	min-width: 70px;
+}
+
+.Spotify-logo img {
+	width: 100%;
+}
+
+.MixedGreensApp {
+	width: 90%;
+	height: 80%;
+	max-width: 500px;
+}
+
+/* @media (min-width: 600px) {
+	.MixedGreensApp {
+		width: 80%;
+	}
+} */

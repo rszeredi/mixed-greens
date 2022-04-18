@@ -1,3 +1,19 @@
+.SearchBar {
+	width: 100%;
+	flex-grow: 0;
+}
+
+.SearchBar-search-bar {
+	/* border-radius: 3rem; */
+	transition: box-shadow 0.2s;
+}
+
+.SearchBar-search-bar:focus {
+	box-shadow: 0 0 0 0.1rem #aaa;
+	/* box-shadow: none; */
+	/* border: 1px solid #aaa; */
+}
+
 .SearchBar-dropdown-menu {
 	width: 100%;
 	overflow: scroll;
@@ -16,7 +32,7 @@
 .SearchBar-dropdown-item img {
 	height: 50px;
 	width: 50px;
-	border-radius: 50%;
+	/* border-radius: 50%; */
 	object-fit: cover;
 }
 

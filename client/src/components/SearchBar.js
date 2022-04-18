@@ -103,10 +103,11 @@ function SearchBar() {
 
 	console.log('>>>>SEEDS: ', seeds);
 	return (
-		<Container className="d-flex flex-column">
+		<Container className="SearchBar d-flex flex-column">
 			<div className={`dropdown ${searchResultsCombined.length ? 'is-active' : ''}`}>
 				<Form.Control
 					type="search"
+					className="SearchBar-search-bar"
 					placeholder="Search for a song, artist, or genre..."
 					value={search}
 					onChange={handleChange}
@@ -133,7 +134,7 @@ function SearchResult({ name, artist, imageUrl, id, handleSelect, type }) {
 				<img src={imageUrl} alt="Seed Image" />
 			) : (
 				<div className="SearchBar-genre-icon">
-					<i className="fa fa-solid fa-music" />
+					<i className="fa-solid fa-music" />
 				</div>
 			)}
 			<div className={`m-3 ${type === 'genre' ? 'SearchBar-dropdown-genre' : ''}`}>

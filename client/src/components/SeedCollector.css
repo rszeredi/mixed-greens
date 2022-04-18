@@ -1,3 +1,30 @@
-.SeedCollector-btn {
+.SeedCollector {
+	min-height: 12%;
+	/* flex-grow: 1; */
+}
+
+.SeedCollector-seed-container {
+	width: 100%;
+	flex-wrap: wrap;
+	gap: 0rem;
+}
+
+.SeedCollector-seed-btn {
 	border-radius: 2rem;
+	padding: 0 0.5rem;
+	margin: 0.1rem 0.4rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.SeedCollector-action-btn {
+	border-radius: 2rem;
+	padding: 0.3rem 1rem;
+	/* width: 190px; */
+}
+
+.SeedCollector-seed-btn i {
+	color: white;
+	margin-left: 0.4rem;
 }
