@@ -42,7 +42,7 @@ function Playlist() {
 function convertMillisecondsToTime(durationMs) {
 	const durationMinsDouble = durationMs / 1000 / 60;
 	const minutes = Math.floor(durationMinsDouble);
-	const seconds = String(Math.round((durationMinsDouble - minutes) * 60)).padEnd(2, '0');
+	const seconds = String(Math.round((durationMinsDouble - minutes) * 60)).padStart(2, '0');
 	return `${minutes}:${seconds}`;
 }
 
