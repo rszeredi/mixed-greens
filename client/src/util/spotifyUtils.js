@@ -47,10 +47,15 @@ export function filterGenres(res, search) {
 }
 
 export function parseRecommendations(recommendations) {
-	return recommendations.tracks.map((track) => ({
-		artist: track.artists[0].name,
-		trackName: track.name,
-		id: track.id,
-		uri: track.uri
-	}));
+	return recommendations.tracks.map((track) => {
+		const albumImage = getSmallestImage(track.album.images);
+		return {
+			artists: track.artists.map((a) => a.name),
+			trackName: track.name,
+			id: track.id,
+			uri: track.uri,
+			duration_ms: track.duration_ms,
+			imageUrl: albumImage.url
+		};
+	});
 }

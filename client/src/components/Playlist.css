@@ -14,6 +14,9 @@
 .Playlist-table th,
 .Playlist-table td {
 	border-color: #444;
+	word-wrap: break-word;
+	max-width: 300px;
+	vertical-align: middle;
 }
 
 .Playlist-table.table th {
