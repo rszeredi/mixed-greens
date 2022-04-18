@@ -8,7 +8,8 @@ export const initialState = {
 	seeds: [],
 	playlist: [],
 	playing: false,
-	item: null
+	item: null,
+	isFirstUse: true
 };
 
 const reducer = (state, action) => {
@@ -34,6 +35,17 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				token: null
+			};
+		case 'SET_NOT_FIRST_USE':
+			return {
+				...state,
+				isFirstUse: false
+			};
+
+		case 'SET_IS_FIRST_USE':
+			return {
+				...state,
+				isFirstUse: true
 			};
 		case 'ADD_TO_SEEDS':
 			return {

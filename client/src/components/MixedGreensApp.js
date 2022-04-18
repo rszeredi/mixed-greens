@@ -13,7 +13,8 @@ import { useStateValue } from '../contexts/StateProvider';
 function MixedGreensApp() {
 	const [ { token }, dispatch ] = useStateValue();
 
-	const deleteToken = () => {
+	const handleLogOut = () => {
+		dispatch({ type: 'SET_IS_FIRST_USE' }); // so that we don't show the instructions anymore
 		dispatch({ type: 'DELETE_TOKEN' });
 	};
 	//fixed-top
@@ -40,7 +41,7 @@ function MixedGreensApp() {
 					</a>
 					<div
 						className="MixedGreensApp-navbar-item MixedGreensApp-navbar-item-btn"
-						onClick={deleteToken}
+						onClick={handleLogOut}
 					>
 						LOGOUT
 					</div>

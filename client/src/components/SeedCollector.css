@@ -3,6 +3,16 @@
 	flex-grow: 0;
 }
 
+.SeedCollector-main {
+	transition: all 1s;
+}
+
+.SeedCollector-description {
+	color: white;
+	font-size: 1.4rem;
+	margin: 2rem 0;
+}
+
 .SeedCollector-seed-container {
 	width: 100%;
 	flex-wrap: wrap;
