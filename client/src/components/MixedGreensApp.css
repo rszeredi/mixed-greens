@@ -1,3 +1,14 @@
+.MixedGreensApp-container {
+	width: 90% !important;
+}
+.MixedGreensApp-header {
+	width: fit-content;
+}
+
+.MixedGreensApp-header-top {
+	width: 100%;
+}
+
 .MixedGreensApp-heading {
 	color: white;
 	font-size: 3.5rem;
@@ -5,7 +16,7 @@
 }
 
 .Spotify-logo {
-	margin: 1rem auto;
+	margin: 1rem 0;
 	max-width: 150px;
 	min-width: 70px;
 }
@@ -18,6 +29,12 @@
 	width: 90%;
 	height: 80%;
 	max-width: 500px;
+}
+
+.Logout-btn {
+	font-size: 0.8rem;
+	/* background-color: none; */
+	/* color: white; */
 }
 
 /* @media (min-width: 600px) {

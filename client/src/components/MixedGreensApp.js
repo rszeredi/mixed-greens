@@ -13,16 +13,29 @@ import { useStateValue } from '../contexts/StateProvider';
 function MixedGreensApp() {
 	const [ { token }, dispatch ] = useStateValue();
 
+	const deleteToken = () => {
+		dispatch({ type: 'DELETE_TOKEN' });
+	};
+
 	return (
 		<Container
-			className="d-flex flex-column align-items-center py-3"
+			className="MixedGreensApp-container d-flex flex-column align-items-center py-3"
 			style={{ height: '100vh' }}
 		>
-			<div className="Spotify-logo">
-				<img src={spotifyLogo} alt="Spotify Logo" />
+			<div className="MixedGreensApp-header d-flex flex-column align-items-center justify-content-center">
+				<div className="MixedGreensApp-header-top d-flex align-items-center justify-content-between">
+					<div className="Spotify-logo">
+						<img src={spotifyLogo} alt="Spotify Logo" />
+					</div>
+					<button
+						className="Logout-btn btn btn-secondary btn-lg rounded-pill"
+						onClick={deleteToken}
+					>
+						LOGOUT
+					</button>
+				</div>
+				<h1 className="MixedGreensApp-heading text-center my-3">Mixed Greens</h1>
 			</div>
-
-			<h1 className="MixedGreensApp-heading text-center my-3">Mixed Greens</h1>
 
 			{token ? (
 				<div className="MixedGreensApp d-flex flex-column align-items-center">

@@ -30,6 +30,11 @@ const reducer = (state, action) => {
 				...state,
 				token: action.token
 			};
+		case 'DELETE_TOKEN':
+			return {
+				...state,
+				token: null
+			};
 		case 'ADD_TO_SEEDS':
 			return {
 				...state,
@@ -54,6 +59,7 @@ const reducer = (state, action) => {
 				...state,
 				playlist: action.playlist
 			};
+
 		default:
 			return state;
 	}
