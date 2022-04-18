@@ -1,6 +1,6 @@
 .SeedCollector {
-	min-height: 12%;
-	/* flex-grow: 1; */
+	/* min-height: 12%; */
+	flex-grow: 0;
 }
 
 .SeedCollector-seed-container {

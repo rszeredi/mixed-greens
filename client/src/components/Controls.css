@@ -1,4 +1,8 @@
 .Controls-player {
 	width: 100%;
-	color: purple;
+	flex-grow: 0;
+}
+
+.Controls-player.hide {
+	visibility: hidden;
 }

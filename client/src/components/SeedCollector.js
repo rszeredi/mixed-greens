@@ -55,19 +55,19 @@ function SeedCollector() {
 		));
 	console.log('playlist STATE: ', playlist);
 	return (
-		<Container className="SeedCollector d-flex flex-column justify-content-center align-items-center">
+		<Container className="SeedCollector d-flex flex-column justify-content-center align-items-center mt-2">
 			<SearchBar />
-			<Container className="SeedCollector-seed-container d-flex justify-content-center align-items-center">
+			<Container className="SeedCollector-seed-container d-flex justify-content-center align-items-center py-4">
 				{seeds && seedItems()}
 			</Container>
 			<Container className="d-flex justify-content-around align-items-center">
-				<button
+				{/* <button
 					className="SeedCollector-action-btn btn btn-danger"
 					onClick={handleClearSeeds}
 					disabled={!seeds.length ? true : false}
 				>
 					Clear Seeds
-				</button>
+				</button> */}
 
 				<button
 					className="SeedCollector-action-btn btn btn-success"

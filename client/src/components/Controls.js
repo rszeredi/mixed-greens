@@ -20,7 +20,7 @@ function Controls() {
 
 	// console.log('uri', playlist[0].uri);
 	return (
-		<div className="Controls-player mt-3">
+		<div className={`Controls-player mt-3 ${playlist.length === 0 ? 'hide' : ''}`}>
 			<SpotifyPlayer
 				token={token}
 				uris={!playlist.length ? [] : playlist.map((i) => i.uri)}

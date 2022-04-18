@@ -11,7 +11,7 @@ function Playlist() {
 
 	// flex-grow-1
 	return (
-		<div className="Playlist my-1 align-items-center">
+		<div className="Playlist my-5 align-items-center">
 			{playlist.length > 0 && (
 				// <table className="Playlist-table table table-striped">
 				<table className="Playlist-table table">
