@@ -7,6 +7,7 @@ import SpotifyWebApi from 'spotify-web-api-node';
 import { getTokenFromUrl } from '../util/spotify';
 import { useStateValue } from '../contexts/StateProvider';
 import MixedGreensApp from '../components/MixedGreensApp';
+import Login from '../components/Login';
 
 const _spotify = new SpotifyWebApi();
 
@@ -62,11 +63,7 @@ function App() {
 		dispatch({ type: 'SET_SPOTIFY', spotify: _spotify });
 	}, []);
 
-	return (
-		<div className="App">
-			<MixedGreensApp />
-		</div>
-	);
+	return <div className="App">{token ? <MixedGreensApp /> : <Login />}</div>;
 }
 
 export default App;

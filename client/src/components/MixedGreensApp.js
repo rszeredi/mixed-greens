@@ -16,37 +16,48 @@ function MixedGreensApp() {
 	const deleteToken = () => {
 		dispatch({ type: 'DELETE_TOKEN' });
 	};
-
+	//fixed-top
 	return (
-		<Container
-			className="MixedGreensApp-container d-flex flex-column align-items-center py-3"
-			style={{ height: '100vh' }}
-		>
-			<div className="MixedGreensApp-header d-flex flex-column align-items-center justify-content-center">
-				<div className="MixedGreensApp-header-top d-flex align-items-center justify-content-between">
-					<div className="Spotify-logo">
+		<div className="MixedGreensApp d-flex flex-column" style={{ height: '100vh' }}>
+			<nav className="MixedGreensApp-navbar navbar ">
+				<div className="MixedGreensApp-navbar-name-logo d-flex align-items-center">
+					<a
+						href="https://www.spotify.com"
+						className="MixedGreensApp-navbar-item Spotify-logo"
+					>
 						<img src={spotifyLogo} alt="Spotify Logo" />
+					</a>
+					<div className="MixedGreensApp-navbar-item MixedGreensApp-heading text-center">
+						Mixed Greens
 					</div>
-					<button
-						className="Logout-btn btn btn-secondary btn-lg rounded-pill"
+				</div>
+				<div className="MixedGreensApp-navbar-buttons d-flex align-items-center justify-content-between">
+					<a
+						href="https://www.spotify.com"
+						className="MixedGreensApp-navbar-item MixedGreensApp-navbar-item-btn"
+					>
+						GET SPOTIFY
+					</a>
+					<div
+						className="MixedGreensApp-navbar-item MixedGreensApp-navbar-item-btn"
 						onClick={deleteToken}
 					>
 						LOGOUT
-					</button>
+					</div>
 				</div>
-				<h1 className="MixedGreensApp-heading text-center my-3">Mixed Greens</h1>
-			</div>
+			</nav>
 
 			{token ? (
-				<div className="MixedGreensApp d-flex flex-column align-items-center">
+				// <div className="MixedGreensApp d-flex flex-column align-items-center">
+				<Container className="MixedGreensApp-container d-flex flex-column align-items-center py-3">
 					<SeedCollector />
 					<Playlist />
 					<Controls />
-				</div>
+				</Container>
 			) : (
 				<Login />
 			)}
-		</Container>
+		</div>
 	);
 }
 

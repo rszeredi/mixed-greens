@@ -1,8 +1,46 @@
+.MixedGreensApp {
+	width: 100%;
+	height: '100vh';
+}
+
+.MixedGreensApp-navbar {
+	background-color: #191414;
+	/* border-bottom: 1px solid gray; */
+	box-shadow: 0 0 0.5rem 0.25rem #444;
+}
+.MixedGreensApp-navbar-item {
+	padding: 0 1rem;
+	color: white;
+	/* margin-right: 1rem; */
+}
+
+.MixedGreensApp-navbar .MixedGreensApp-navbar-item:not(:last-child) {
+	border-right: 1px solid gray;
+}
+
+.MixedGreensApp-navbar-border {
+	padding: 0;
+	border-right: 1px solid gray;
+	height: 100%;
+}
+
+a.MixedGreensApp-navbar-item {
+	text-decoration: none;
+}
+
+.MixedGreensApp-navbar-item-btn {
+	cursor: pointer;
+	transition: transform 0.1s;
+}
+.MixedGreensApp-navbar-item-btn:hover {
+	color: white;
+	transform: scale(1.05);
+}
+
 .MixedGreensApp-container {
 	width: 90% !important;
-}
-.MixedGreensApp-header {
-	width: fit-content;
+	height: 80%;
+	max-width: 800px;
 }
 
 .MixedGreensApp-header-top {
@@ -11,24 +49,18 @@
 
 .MixedGreensApp-heading {
 	color: white;
-	font-size: 3.5rem;
+	font-size: 1.8rem;
+	cursor: default;
 	/* font-weight: bold; */
 }
 
 .Spotify-logo {
-	margin: 1rem 0;
 	max-width: 150px;
 	min-width: 70px;
 }
 
 .Spotify-logo img {
 	width: 100%;
-}
-
-.MixedGreensApp {
-	width: 90%;
-	height: 80%;
-	max-width: 500px;
 }
 
 .Logout-btn {
