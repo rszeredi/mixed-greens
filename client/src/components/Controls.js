@@ -4,23 +4,27 @@ import { useStateValue } from '../contexts/StateProvider';
 import './Controls.css';
 
 function Controls() {
-	const [ { token, playlist, playingTrackNumber }, dispatch ] = useStateValue();
+	const [ { token, playlist, playingTrackNumber, loadingPlaylist }, dispatch ] = useStateValue();
 	const [ isPlaying, setIsPlaying ] = useState(false);
 
 	useEffect(
 		() => {
-			if (playlist.length) {
+			if (playlist.length && !loadingPlaylist) {
 				setIsPlaying(true);
 			}
 		},
-		[ playlist ]
+		[ playlist, loadingPlaylist ]
 	);
 	console.log('playingTrackNumber: ', playingTrackNumber);
 	// if (!playlist.length) return;
 
 	// console.log('uri', playlist[0].uri);
 	return (
-		<div className={`Controls-player mt-3 ${playlist.length === 0 ? 'hide' : ''}`}>
+		<div
+			className={`Controls-player mt-3 ${playlist.length === 0 || loadingPlaylist
+				? 'hide'
+				: ''}`}
+		>
 			<SpotifyPlayer
 				token={token}
 				uris={!playlist.length ? [] : playlist.map((i) => i.uri)}

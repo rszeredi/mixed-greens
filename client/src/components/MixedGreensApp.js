@@ -8,10 +8,11 @@ import SeedCollector from './SeedCollector';
 import Login from '../components/Login';
 
 import spotifyLogo from '../app/Spotify_Logo_RGB_White.png';
+import saladGif from '../salad.gif';
 import { useStateValue } from '../contexts/StateProvider';
 
 function MixedGreensApp() {
-	const [ { token }, dispatch ] = useStateValue();
+	const [ { token, loadingPlaylist }, dispatch ] = useStateValue();
 
 	const handleLogOut = () => {
 		dispatch({ type: 'SET_IS_FIRST_USE' }); // so that we don't show the instructions anymore
@@ -52,6 +53,11 @@ function MixedGreensApp() {
 				// <div className="MixedGreensApp d-flex flex-column align-items-center">
 				<Container className="MixedGreensApp-container d-flex flex-column align-items-center py-3">
 					<SeedCollector />
+					{loadingPlaylist && (
+						<div className="my-5">
+							<img src={saladGif} style={{ width: '80px', height: '80px' }} />
+						</div>
+					)}
 					<Playlist />
 					<Controls />
 				</Container>

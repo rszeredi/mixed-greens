@@ -3,6 +3,10 @@
 	height: '100vh';
 }
 
+.MixedGreensApp-hide {
+	visibility: hidden;
+}
+
 .MixedGreensApp-navbar {
 	background-color: #191414;
 	/* border-bottom: 1px solid gray; */

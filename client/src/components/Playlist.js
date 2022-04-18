@@ -6,7 +6,7 @@ import { useStateValue } from '../contexts/StateProvider';
 import './Playlist.css';
 
 function Playlist() {
-	const [ { playlist }, dispatch ] = useStateValue();
+	const [ { playlist, loadingPlaylist }, dispatch ] = useStateValue();
 	console.log('playlist', playlist);
 
 	const playTrack = (trackNumber) => {
@@ -18,7 +18,10 @@ function Playlist() {
 
 	// flex-grow-1
 	return (
-		<div className="Playlist my-5 align-items-center">
+		<div
+			className={`Playlist my-5 align-items-center ${loadingPlaylist &&
+				'MixedGreensApp-hide'}`}
+		>
 			{playlist.length > 0 && (
 				// <table className="Playlist-table table table-striped">
 				<table className="Playlist-table table">
@@ -28,7 +31,7 @@ function Playlist() {
 							<th scope="col">Title</th>
 							<th scope="col">Artist</th>
 							<th scope="col">
-								<i class="fa-solid fa-clock" />
+								<i className="fa-solid fa-clock" />
 							</th>
 						</tr>
 					</thead>

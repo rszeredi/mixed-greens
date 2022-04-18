@@ -4,13 +4,14 @@ export const initialState = {
 	// TODO: remove after debugging!
 	token: null,
 	token:
-		'BQDw0679wn1nSMRXF9_b8N7VQoFs09plbcT7_gR6Nm-sZbVdostwfilyBRrIcQrj5wiCCXVq7bHfeMjGCe5IBMhl2gxPM9-wVBDdbeJVxBF1_jKabipB684TyBGl5yHdnzltP86DSBUOTgTwMuVzrOOv8K4DhkoRcZQ7MhCbpu3AShM_iDnb5zzYFuZiGKCHWtmVCA',
+		'BQBDD6x6dnHREd7uS9he4nyrguSm7SDtN29hKD8SSORObC10O2HuveZQc93MeJgIWLgcctSbWh9Cbb0KXnh28ukW8knCQqixYyC6O0m6Hr1hQVT3fg3jmETEh972wI9_iRuUFtjbUCWDMkgmtWKA6Af_iARYjS2Baie6N9U4v2yg-YXCSD26HA8q4yJG1SjYU1BLsw',
 	seeds: [],
 	playlist: [],
 	playingTrackNumber: 0,
 	playing: false,
 	item: null,
-	isFirstUse: true
+	isFirstUse: true,
+	loadingPlaylist: false
 };
 
 const reducer = (state, action) => {
@@ -66,6 +67,11 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				seeds: newSeeds
+			};
+		case 'SET_LOADING':
+			return {
+				...state,
+				loadingPlaylist: action.value
 			};
 		case 'SET_PLAYLIST':
 			return {

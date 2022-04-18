@@ -14,7 +14,13 @@ function SeedCollector() {
 		dispatch({ type: 'CLEAR_SEEDS' });
 	};
 
+	const setLoadingTemporarily = () => {
+		dispatch({ type: 'SET_LOADING', value: true });
+		setTimeout(() => dispatch({ type: 'SET_LOADING', value: false }), 1000);
+	};
+
 	const generatePlaylist = () => {
+		setLoadingTemporarily();
 		dispatch({ type: 'SET_NOT_FIRST_USE' }); // so that we don't show the instructions anymore
 
 		if (!seeds.length) return;
@@ -96,7 +102,7 @@ function Seed({ label, id, deleteSeed }) {
 	return (
 		<button className="SeedCollector-seed-btn btn btn-secondary btn-sm" onClick={handleClick}>
 			{label}
-			<i class="fa fa-xmark" />
+			<i className="fa fa-xmark" />
 		</button>
 	);
 }
