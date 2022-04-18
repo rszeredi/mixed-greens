@@ -7,6 +7,7 @@ export const initialState = {
 		'BQDw0679wn1nSMRXF9_b8N7VQoFs09plbcT7_gR6Nm-sZbVdostwfilyBRrIcQrj5wiCCXVq7bHfeMjGCe5IBMhl2gxPM9-wVBDdbeJVxBF1_jKabipB684TyBGl5yHdnzltP86DSBUOTgTwMuVzrOOv8K4DhkoRcZQ7MhCbpu3AShM_iDnb5zzYFuZiGKCHWtmVCA',
 	seeds: [],
 	playlist: [],
+	playingTrackNumber: 0,
 	playing: false,
 	item: null,
 	isFirstUse: true
@@ -70,6 +71,12 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				playlist: action.playlist
+			};
+
+		case 'SET_PLAYING_TRACK_NUMBER':
+			return {
+				...state,
+				playingTrackNumber: action.trackNumber
 			};
 
 		default:

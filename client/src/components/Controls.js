@@ -4,7 +4,7 @@ import { useStateValue } from '../contexts/StateProvider';
 import './Controls.css';
 
 function Controls() {
-	const [ { token, playlist }, dispatch ] = useStateValue();
+	const [ { token, playlist, playingTrackNumber }, dispatch ] = useStateValue();
 	const [ isPlaying, setIsPlaying ] = useState(false);
 
 	useEffect(
@@ -15,7 +15,7 @@ function Controls() {
 		},
 		[ playlist ]
 	);
-	// console.log('>>>USER: ', spotify.getMe());
+	console.log('playingTrackNumber: ', playingTrackNumber);
 	// if (!playlist.length) return;
 
 	// console.log('uri', playlist[0].uri);
@@ -24,6 +24,7 @@ function Controls() {
 			<SpotifyPlayer
 				token={token}
 				uris={!playlist.length ? [] : playlist.map((i) => i.uri)}
+				offset={playingTrackNumber}
 				callback={(state) => {
 					if (!state.isPlaying) setIsPlaying(false);
 				}}

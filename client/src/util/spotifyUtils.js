@@ -47,7 +47,7 @@ export function filterGenres(res, search) {
 }
 
 export function parseRecommendations(recommendations) {
-	return recommendations.tracks.map((track) => {
+	return recommendations.tracks.map((track, idx) => {
 		const albumImage = getSmallestImage(track.album.images);
 		return {
 			artists: track.artists.map((a) => a.name),
@@ -55,7 +55,8 @@ export function parseRecommendations(recommendations) {
 			id: track.id,
 			uri: track.uri,
 			duration_ms: track.duration_ms,
-			imageUrl: albumImage.url
+			imageUrl: albumImage.url,
+			trackNumber: idx
 		};
 	});
 }

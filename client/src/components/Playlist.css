@@ -27,8 +27,13 @@
 	top: 0;
 }
 
+.Playlist-table td img {
+	min-width: 64px;
+}
+
 .Playlist-table tr {
 	transition: background-color 0.2s, background-color 0.2s;
+	cursor: pointer;
 }
 
 .Playlist-table tr:hover {

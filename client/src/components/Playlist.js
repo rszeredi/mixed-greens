@@ -8,7 +8,13 @@ import './Playlist.css';
 function Playlist() {
 	const [ { playlist }, dispatch ] = useStateValue();
 	console.log('playlist', playlist);
-	const tracks = () => playlist.map((track) => <Track {...track} key={track.id} />);
+
+	const playTrack = (trackNumber) => {
+		console.log('Will play track: ', trackNumber);
+		dispatch({ type: 'SET_PLAYING_TRACK_NUMBER', trackNumber: trackNumber });
+	};
+	const tracks = () =>
+		playlist.map((track) => <Track {...track} key={track.id} playTrack={playTrack} />);
 
 	// flex-grow-1
 	return (
@@ -40,9 +46,12 @@ function convertMillisecondsToTime(durationMs) {
 	return `${minutes}:${seconds}`;
 }
 
-function Track({ trackName, artists, imageUrl, duration_ms }) {
+function Track({ trackName, artists, imageUrl, duration_ms, trackNumber, playTrack }) {
+	const handleClick = () => {
+		playTrack(trackNumber);
+	};
 	return (
-		<tr>
+		<tr onClick={handleClick}>
 			<td>
 				<img src={imageUrl} />
 			</td>
