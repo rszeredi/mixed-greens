@@ -30,4 +30,31 @@ app.post('/login', (req, res) => {
 		});
 });
 
+app.post('/refresh', (req, res) => {
+	const refreshToken = req.body.refreshToken;
+	const spotifyApi = new SpotifyWebApi({
+		redirectUri: 'http://localhost:3000',
+		clientId: 'ce3a4e00e98a45ec8027b9b925817651',
+		clientSecret: '7016fae8d2724455a0b4b14f032c4d28',
+		refreshToken
+	});
+
+	console.log('refreshToken', refreshToken);
+
+	spotifyApi
+		.refreshAccessToken()
+		.then((data) => {
+			// save the token so that it's used in future calls
+			// spotifyApi.setAccessToken(data.body['access_token'])
+
+			res.json({
+				accessToken: data.body.access_token,
+				expiresIn: data.body.expires_in
+			});
+		})
+		.catch(() => {
+			res.sendStatus(400);
+		});
+});
+
 app.listen(3001);
