@@ -19,7 +19,8 @@ function Login() {
 				<h1 className="Login-heading text-center my-3">Mixed Greens</h1>
 			</div>
 			<div className="Login-description">
-				Pick some seeds (artist, tracks or genres) and we'll mix up a playlist for you!
+				Pick some seeds (artist, tracks or genres) and let Spotify mix together a playlist
+				for you!
 			</div>
 			<div className="d-flex justify-content-center">
 				<a className="Login-btn btn btn-success btn-lg rounded-pill" href={AUTH_URL_CODE}>

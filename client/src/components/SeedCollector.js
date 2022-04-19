@@ -63,7 +63,7 @@ function SeedCollector() {
 		<Container className="SeedCollector d-flex flex-column justify-content-center align-items-center mt-2">
 			{isFirstUse && (
 				<div className="SeedCollector-description">
-					Pick some seeds and let Spotify mix up a playlist for you!
+					Pick some seeds and let Spotify mix together a playlist for you!
 				</div>
 			)}
 			<Container className="SeedCollector-main">
