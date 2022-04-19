@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// const SERVER_URL = "http://localhost:3001"
+const SERVER_URL = 'https://mixed-greens-server.herokuapp.com';
+
 export default function useAuth(code) {
 	const [ accessToken, setAccessToken ] = useState();
 	const [ refreshToken, setRefreshToken ] = useState();
@@ -11,7 +14,7 @@ export default function useAuth(code) {
 			console.log('CODE: ', code);
 			if (!code) return;
 			axios
-				.post('http://localhost:3001/login', { code })
+				.post(`${SERVER_URL}/login`, { code })
 				.then((res) => {
 					console.log(res.data);
 					window.history.pushState({}, null, '/');
@@ -34,7 +37,7 @@ export default function useAuth(code) {
 			if (!refreshToken || !expiresIn) return;
 			const interval = setInterval(() => {
 				axios
-					.post('http://localhost:3001/refresh', { refreshToken })
+					.post(`${SERVER_URL}/refresh`, { refreshToken })
 					.then((res) => {
 						setAccessToken(res.data.accessToken);
 						setExpiresIn(res.data.expiresIn);
