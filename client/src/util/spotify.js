@@ -1,7 +1,7 @@
 export const AUTH_URL_BASE = 'https://accounts.spotify.com/authorize';
 
 // const REDIRECT_URI = 'http://localhost:3000';
-const REDIRECT_URI = 'https://rszeredi.github.com/mixed-greens';
+const REDIRECT_URI = 'https://rszeredi.github.io/mixed-greens';
 
 const CLIENT_ID = 'ce3a4e00e98a45ec8027b9b925817651'; // public, so ok to include here?
 
