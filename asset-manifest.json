@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mixed-greens/static/css/main.2804e504.css",
-    "main.js": "/mixed-greens/static/js/main.6d4938e1.js",
+    "main.js": "/mixed-greens/static/js/main.52aefc73.js",
     "static/media/salad.gif": "/mixed-greens/static/media/salad.5a7f4988f275dac8a125.gif",
     "static/media/Spotify_Logo_RGB_White.png": "/mixed-greens/static/media/Spotify_Logo_RGB_White.f48fb565509bf23854a8.png",
     "index.html": "/mixed-greens/index.html",
     "main.2804e504.css.map": "/mixed-greens/static/css/main.2804e504.css.map",
-    "main.6d4938e1.js.map": "/mixed-greens/static/js/main.6d4938e1.js.map"
+    "main.52aefc73.js.map": "/mixed-greens/static/js/main.52aefc73.js.map"
   },
   "entrypoints": [
     "static/css/main.2804e504.css",
-    "static/js/main.6d4938e1.js"
+    "static/js/main.52aefc73.js"
   ]
 }
