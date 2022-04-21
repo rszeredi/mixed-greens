@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-// const SERVER_URL = "http://localhost:3001"
-const SERVER_URL = 'https://mixed-greens-server.herokuapp.com';
+const DEV_MODE = false;
+const SERVER_URL = DEV_MODE ? 'http://localhost:3001' : 'https://mixed-greens-server.herokuapp.com';
 
 export default function useAuth(code) {
 	const [ accessToken, setAccessToken ] = useState();
