@@ -18,6 +18,10 @@ function MixedGreensApp() {
 		dispatch({ type: 'SET_IS_FIRST_USE' }); // so that we don't show the instructions anymore
 		dispatch({ type: 'DELETE_TOKEN' });
 	};
+
+	const handleCloseDropDown = () => {
+		dispatch({ type: 'HIDE_SEARCH_DROPDOWN' });
+	};
 	//fixed-top
 	return (
 		<div className="MixedGreensApp d-flex flex-column" style={{ height: '100vh' }}>
@@ -51,7 +55,10 @@ function MixedGreensApp() {
 
 			{token ? (
 				// <div className="MixedGreensApp d-flex flex-column align-items-center">
-				<Container className="MixedGreensApp-container d-flex flex-column align-items-center py-3">
+				<Container
+					className="MixedGreensApp-container d-flex flex-column align-items-center py-3"
+					onClick={handleCloseDropDown}
+				>
 					<SeedCollector />
 					{loadingPlaylist && (
 						<div className="my-5">

@@ -9,7 +9,7 @@ import './SearchBar.css';
 let searchTimeout;
 
 function SearchBar() {
-	const [ { spotify, seeds }, dispatch ] = useStateValue();
+	const [ { spotify, seeds, showSearchDropDown }, dispatch ] = useStateValue();
 	const [ search, setSearch ] = useState(''); // todo: should these be moved to state provider?
 	const [ searchResultsArtists, setSearchResultsArtists ] = useState([]);
 	const [ searchResultsGenres, setSearchResultsGenres ] = useState([]);
@@ -19,7 +19,11 @@ function SearchBar() {
 	useEffect(
 		() => {
 			clearTimeout(searchTimeout);
-			if (!search.length) return setSearchResultsCombined([]);
+			if (!search.length) {
+				setSearchResultsCombined([]);
+				dispatch({ type: 'HIDE_SEARCH_DROPDOWN' });
+				return;
+			}
 
 			searchTimeout = setTimeout(() => {
 				console.log(`searching: ${search}`);
@@ -70,6 +74,7 @@ function SearchBar() {
 				if (searchResultsTracks[i]) _searchResultsCombined.push(searchResultsTracks[i]);
 			}
 			setSearchResultsCombined(_searchResultsCombined);
+			if (_searchResultsCombined.length) dispatch({ type: 'SHOW_SEARCH_DROPDOWN' });
 			console.log('_searchResultsCombined', _searchResultsCombined);
 		},
 		[ searchResultsArtists, searchResultsGenres, searchResultsTracks ]
@@ -104,7 +109,7 @@ function SearchBar() {
 	console.log('>>>>SEEDS: ', seeds);
 	return (
 		<Container className="SearchBar d-flex flex-column">
-			<div className={`dropdown ${searchResultsCombined.length ? 'is-active' : ''}`}>
+			<div className={`dropdown ${showSearchDropDown ? 'is-active' : ''}`}>
 				<Form.Control
 					type="search"
 					className="SearchBar-search-bar"

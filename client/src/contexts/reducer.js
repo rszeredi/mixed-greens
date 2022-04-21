@@ -11,7 +11,8 @@ export const initialState = {
 	playing: false,
 	item: null,
 	isFirstUse: true,
-	loadingPlaylist: false
+	loadingPlaylist: false,
+	showSearchDropDown: false
 };
 
 const reducer = (state, action) => {
@@ -83,6 +84,18 @@ const reducer = (state, action) => {
 			return {
 				...state,
 				playingTrackNumber: action.trackNumber
+			};
+
+		case 'HIDE_SEARCH_DROPDOWN':
+			return {
+				...state,
+				showSearchDropDown: false
+			};
+
+		case 'SHOW_SEARCH_DROPDOWN':
+			return {
+				...state,
+				showSearchDropDown: true
 			};
 
 		default:
