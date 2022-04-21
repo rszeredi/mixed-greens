@@ -51,6 +51,7 @@ const reducer = (state, action) => {
 				isFirstUse: true
 			};
 		case 'ADD_TO_SEEDS':
+			if (state.seeds.map((i) => i.id).includes(action.newSeed.id)) return state;
 			return {
 				...state,
 				seeds: [ ...state.seeds, action.newSeed ]
