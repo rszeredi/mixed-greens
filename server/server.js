@@ -4,6 +4,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const SpotifyWebApi = require('spotify-web-api-node');
 
+// REDIRECT_URI=https://rszeredi.github.io/mixed-greens
+
 const app = express();
 const port = process.env.PORT || 3001;
 app.use(cors());
@@ -11,6 +13,9 @@ app.use(bodyParser.json());
 
 app.post('/login', (req, res) => {
 	const code = req.body.code;
+	console.log('code is: ', code);
+	// console.log('REDIRECT_URI: ', process.env.REDIRECT_URI);
+
 	const spotifyApi = new SpotifyWebApi({
 		redirectUri: process.env.REDIRECT_URI,
 		clientId: process.env.CLIENT_ID,
