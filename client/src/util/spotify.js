@@ -1,5 +1,7 @@
 export const AUTH_URL_BASE = 'https://accounts.spotify.com/authorize';
 
+console.log('spotify.js', process.env);
+
 const DEV_MODE = false;
 const REDIRECT_URI = DEV_MODE ? 'http://localhost:3000' : 'https://rszeredi.github.io/mixed-greens';
 
