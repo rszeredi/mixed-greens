@@ -37,7 +37,7 @@ function MixedGreensApp({ loadingApp }) {
 			// <div className="MixedGreensApp d-flex flex-column align-items-center">
 			<Container className="MixedGreensApp-container d-flex flex-column align-items-center py-3">
 				<SeedCollector />
-				{loadingPlaylist && { loadingGif }}
+				{loadingPlaylist && loadingGif}
 				<Playlist />
 				<Controls />
 			</Container>

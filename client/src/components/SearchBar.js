@@ -78,7 +78,6 @@ function SearchBar() {
 			}
 			setSearchResultsCombined(_searchResultsCombined);
 			if (_searchResultsCombined.length) dispatch({ type: 'SHOW_SEARCH_DROPDOWN' });
-			console.log('_searchResultsCombined', _searchResultsCombined);
 		},
 		[ searchResultsArtists, searchResultsGenres, searchResultsTracks ]
 	);
@@ -95,7 +94,6 @@ function SearchBar() {
 
 	const handleSelect = (artist) => {
 		dispatch({ type: 'ADD_TO_SEEDS', newSeed: artist });
-		console.log('seeds', seeds);
 		setSearchResultsCombined([]);
 		setSearch([]);
 	};

@@ -39,9 +39,7 @@ function SeedCollector() {
 			})
 			.then(
 				(res) => {
-					console.log('recs res.body:', res.body);
 					let playlistFromSeeds = parseRecommendations(res.body);
-					console.log('playlistFromSeeds', playlistFromSeeds);
 					dispatch({ type: 'SET_PLAYLIST', playlist: playlistFromSeeds });
 				},
 				(err) => {
@@ -61,7 +59,7 @@ function SeedCollector() {
 		Array.from(seeds).map((item) => (
 			<Seed key={item.id} label={item.name} id={item.id} deleteSeed={deleteSeed} />
 		));
-	console.log('playlist STATE: ', playlist);
+	// console.log('playlist STATE: ', playlist);
 	return (
 		<Container className="SeedCollector d-flex flex-column justify-content-center align-items-center mt-2">
 			{isFirstUse && (

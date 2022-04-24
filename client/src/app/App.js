@@ -40,7 +40,6 @@ function App() {
 		axios
 			.get(URL_ME, { headers })
 			.then((user) => {
-				console.log('user: ', user);
 				dispatch({
 					type: 'SET_USER',
 					user: user

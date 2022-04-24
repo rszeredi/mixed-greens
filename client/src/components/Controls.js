@@ -15,10 +15,7 @@ function Controls() {
 		},
 		[ playlist, loadingPlaylist ]
 	);
-	console.log('playingTrackNumber: ', playingTrackNumber);
-	// if (!playlist.length) return;
 
-	// console.log('uri', playlist[0].uri);
 	return (
 		<div
 			className={`Controls-player mt-3 ${playlist.length === 0 || loadingPlaylist

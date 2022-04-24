@@ -7,7 +7,6 @@ import './Playlist.css';
 
 function Playlist() {
 	const [ { playlist, loadingPlaylist }, dispatch ] = useStateValue();
-	console.log('playlist', playlist);
 
 	const playTrack = (trackNumber) => {
 		dispatch({ type: 'SET_PLAYING_TRACK_NUMBER', trackNumber: trackNumber });
