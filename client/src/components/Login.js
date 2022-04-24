@@ -7,7 +7,7 @@ import './Login.css';
 function Login() {
 	return (
 		<Container
-			className="Login-container d-flex flex-column align-items-center py-3"
+			className="Login-container d-flex flex-column align-items-center py-5"
 			style={{ height: '100vh' }}
 		>
 			<div className="Login-header d-flex flex-column align-items-center justify-content-center">
