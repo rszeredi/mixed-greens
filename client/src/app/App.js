@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import SpotifyWebApi from 'spotify-web-api-node';
@@ -12,12 +12,21 @@ import axios from 'axios';
 
 const _spotify = new SpotifyWebApi();
 
-const code = new URLSearchParams(window.location.search).get('code');
+const _code = new URLSearchParams(window.location.search).get('code');
 
 function App() {
-	const [ { token }, dispatch ] = useStateValue();
+	const [ loadingApp, setLoadingApp ] = useState(false);
+	const [ { token, code, user }, dispatch ] = useStateValue();
 
-	const _accessToken = useAuth(code);
+	useEffect(
+		() => {
+			dispatch({ type: 'SET_CODE', code: _code });
+			if (_code && !user) setLoadingApp(true);
+		},
+		[ _code ]
+	);
+
+	const _accessToken = useAuth(_code);
 
 	// create custom axios call because _spotify.getMe() doesn't seem to catch the error properly
 	const getUser = async (token) => {
@@ -38,6 +47,9 @@ function App() {
 				});
 			})
 			.catch((err) => {
+				dispatch({
+					type: 'SET_INVALID_USER'
+				});
 				console.log(err);
 			});
 	};
@@ -55,12 +67,16 @@ function App() {
 				getUser(_accessToken);
 
 				dispatch({ type: 'SET_SPOTIFY', spotify: _spotify });
+
+				setTimeout(() => setLoadingApp(false), 1000);
 			}
 		},
 		[ _accessToken ]
 	);
 
-	return <div className="App">{token ? <MixedGreensApp /> : <Login />}</div>;
+	return (
+		<div className="App">{code ? <MixedGreensApp loadingApp={loadingApp} /> : <Login />}</div>
+	);
 }
 
 export default App;

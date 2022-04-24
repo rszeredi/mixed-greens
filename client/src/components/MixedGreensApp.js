@@ -10,18 +10,44 @@ import spotifyLogo from '../app/Spotify_Logo_RGB_White.png';
 import saladGif from '../salad.gif';
 import { useStateValue } from '../contexts/StateProvider';
 
-function MixedGreensApp() {
-	const [ { token, user, loadingPlaylist }, dispatch ] = useStateValue();
+function MixedGreensApp({ loadingApp }) {
+	const [ { token, isValidUser, loadingPlaylist }, dispatch ] = useStateValue();
 
 	const handleLogOut = () => {
 		dispatch({ type: 'SET_IS_FIRST_USE' }); // so that we don't show the instructions anymore
-		dispatch({ type: 'DELETE_TOKEN' });
+		dispatch({ type: 'DELETE_TOKEN_AND_CODE' });
+		dispatch({ type: 'UNSET_USER' });
 	};
 
 	const handleCloseDropDown = () => {
 		dispatch({ type: 'HIDE_SEARCH_DROPDOWN' });
 	};
 	//fixed-top
+
+	const loadingGif = (
+		<div className="m-5 m-auto">
+			<img src={saladGif} style={{ width: '80px', height: '80px' }} />
+		</div>
+	);
+	let appContent;
+	if (loadingApp) {
+		appContent = loadingGif;
+	} else if (token && isValidUser) {
+		appContent = (
+			// <div className="MixedGreensApp d-flex flex-column align-items-center">
+			<Container className="MixedGreensApp-container d-flex flex-column align-items-center py-3">
+				<SeedCollector />
+				{loadingPlaylist && { loadingGif }}
+				<Playlist />
+				<Controls />
+			</Container>
+		);
+	} else
+		appContent = (
+			<div className="MixedGreensApp-user-not-valid d-flex align-items-center justify-content-center mt-5">
+				<p>Sorry! Your account is not registered for this app. Please contact Ria :)</p>
+			</div>
+		);
 	return (
 		<div
 			className="MixedGreensApp d-flex flex-column"
@@ -56,23 +82,7 @@ function MixedGreensApp() {
 				</div>
 			</nav>
 
-			{token && user ? (
-				// <div className="MixedGreensApp d-flex flex-column align-items-center">
-				<Container className="MixedGreensApp-container d-flex flex-column align-items-center py-3">
-					<SeedCollector />
-					{loadingPlaylist && (
-						<div className="my-5">
-							<img src={saladGif} style={{ width: '80px', height: '80px' }} />
-						</div>
-					)}
-					<Playlist />
-					<Controls />
-				</Container>
-			) : (
-				<div className="MixedGreensApp-user-not-valid d-flex align-items-center justify-content-center mt-5">
-					<p>Sorry! Your account is not registered for this app. Please contact Ria :)</p>
-				</div>
-			)}
+			{appContent}
 		</div>
 	);
 }
