@@ -24,6 +24,8 @@
 	color: white;
 	text-transform: uppercase;
 	position: sticky;
+	letter-spacing: 1.4px;
+	/* font-weight: normal; */
 	top: 0;
 }
 
@@ -36,7 +38,12 @@
 	cursor: pointer;
 }
 
-.Playlist-table tr:hover {
+.Playlist-table tr:hover * {
 	background-color: #aaa;
 	color: black;
+}
+
+.Playlist-artist {
+	color: #aaa;
+	font-size: 0.85rem;
 }

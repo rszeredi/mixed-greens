@@ -52,6 +52,7 @@ export function parseRecommendations(recommendations) {
 		return {
 			artists: track.artists.map((a) => a.name),
 			trackName: track.name,
+			album: track.album.name,
 			id: track.id,
 			uri: track.uri,
 			duration_ms: track.duration_ms,

@@ -29,7 +29,7 @@ function Playlist() {
 						<tr>
 							<th scope="col" />
 							<th scope="col">Title</th>
-							<th scope="col">Artist</th>
+							<th scope="col">Album</th>
 							<th scope="col">
 								<i className="fa-solid fa-clock" />
 							</th>
@@ -49,7 +49,7 @@ function convertMillisecondsToTime(durationMs) {
 	return `${minutes}:${seconds}`;
 }
 
-function Track({ trackName, artists, imageUrl, duration_ms, trackNumber, playTrack }) {
+function Track({ trackName, artists, imageUrl, duration_ms, trackNumber, playTrack, album }) {
 	const handleClick = () => {
 		playTrack(trackNumber);
 	};
@@ -58,8 +58,11 @@ function Track({ trackName, artists, imageUrl, duration_ms, trackNumber, playTra
 			<td>
 				<img src={imageUrl} />
 			</td>
-			<td>{trackName}</td>
-			<td>{artists.join(' & ')}</td>
+			<td>
+				<div>{trackName}</div>
+				<div className="Playlist-artist">{artists.join(' & ')}</div>
+			</td>
+			<td>{album}</td>
 			<td>{convertMillisecondsToTime(duration_ms)}</td>
 		</tr>
 	);
