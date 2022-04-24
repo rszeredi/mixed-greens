@@ -11,6 +11,7 @@
 	color: white;
 	font-size: 1.4rem;
 	margin: 2rem 0;
+	text-align: center;
 }
 
 .SeedCollector-seed-container {
@@ -30,9 +31,10 @@
 
 .SeedCollector-action-btn {
 	border-radius: 2rem;
-	padding: 0.3rem 1rem;
-	font-size: 1.2rem;
-	font-weight: bold;
+	padding: 0.7rem 1.8rem;
+	font-size: 0.9rem;
+	font-weight: 700;
+	letter-spacing: 1.8px;
 	text-transform: uppercase;
 	/* width: 190px; */
 }

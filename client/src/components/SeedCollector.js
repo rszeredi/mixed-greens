@@ -86,7 +86,7 @@ function SeedCollector() {
 							onClick={generatePlaylist}
 							disabled={!seeds.length ? true : false}
 						>
-							Generate Playlist!
+							Generate Playlist
 						</button>
 					)}
 				</Container>

@@ -11,6 +11,7 @@
 	background-color: #191414;
 	/* border-bottom: 1px solid gray; */
 	box-shadow: 0 0 0.5rem 0.25rem #444;
+	flex-direction: column;
 }
 .MixedGreensApp-navbar-item {
 	padding: 0 1rem;
@@ -36,13 +37,13 @@ a.MixedGreensApp-navbar-item {
 	cursor: pointer;
 	transition: transform 0.1s;
 }
+
 .MixedGreensApp-navbar-item-btn:hover {
 	color: white;
 	transform: scale(1.05);
 }
 
 .MixedGreensApp-container {
-	width: 90% !important;
 	height: 80%;
 	max-width: 800px;
 }
@@ -84,4 +85,14 @@ a.MixedGreensApp-navbar-item {
 	font-size: 1.4rem;
 	text-align: center;
 	margin: 0 0.8rem;
+}
+
+@media (min-width: 600px) {
+	.MixedGreensApp-container {
+		width: 90% !important;
+	}
+
+	.MixedGreensApp-navbar {
+		flex-direction: row;
+	}
 }

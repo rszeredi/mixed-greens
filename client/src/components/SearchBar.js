@@ -108,7 +108,7 @@ function SearchBar() {
 
 	console.log('>>>>SEEDS: ', seeds);
 	return (
-		<Container className="SearchBar d-flex flex-column">
+		<Container className="SearchBar d-flex flex-column p-0">
 			<div className={`dropdown ${showSearchDropDown ? 'is-active' : ''}`}>
 				<Form.Control
 					type="search"

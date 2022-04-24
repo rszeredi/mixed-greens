@@ -5,7 +5,6 @@ import Controls from './Controls';
 import './MixedGreensApp.css';
 import Playlist from './Playlist';
 import SeedCollector from './SeedCollector';
-import Login from '../components/Login';
 
 import spotifyLogo from '../app/Spotify_Logo_RGB_White.png';
 import saladGif from '../salad.gif';
