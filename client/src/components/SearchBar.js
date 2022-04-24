@@ -84,6 +84,11 @@ function SearchBar() {
 		setSearch(e.target.value);
 	};
 
+	const handleSearchBarClick = (e) => {
+		// prevent the dropdown results if the search bar itself is clicked
+		e.stopPropagation();
+	};
+
 	const handleSelect = (artist) => {
 		dispatch({ type: 'ADD_TO_SEEDS', newSeed: artist });
 		console.log('seeds', seeds);
@@ -116,6 +121,7 @@ function SearchBar() {
 					placeholder="Search for a song, artist, or genre..."
 					value={search}
 					onChange={handleChange}
+					onClick={handleSearchBarClick}
 				/>
 				<div className="SearchBar-dropdown-menu dropdown-menu p-0" role="menu">
 					<div className="dropdown-content">{dropdownItems}</div>

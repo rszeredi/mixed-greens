@@ -23,7 +23,11 @@ function MixedGreensApp() {
 	};
 	//fixed-top
 	return (
-		<div className="MixedGreensApp d-flex flex-column" style={{ height: '100vh' }}>
+		<div
+			className="MixedGreensApp d-flex flex-column"
+			style={{ height: '100vh' }}
+			onClick={handleCloseDropDown}
+		>
 			<nav className="MixedGreensApp-navbar navbar ">
 				<div className="MixedGreensApp-navbar-name-logo d-flex align-items-center">
 					<a
@@ -54,10 +58,7 @@ function MixedGreensApp() {
 
 			{token && user ? (
 				// <div className="MixedGreensApp d-flex flex-column align-items-center">
-				<Container
-					className="MixedGreensApp-container d-flex flex-column align-items-center py-3"
-					onClick={handleCloseDropDown}
-				>
+				<Container className="MixedGreensApp-container d-flex flex-column align-items-center py-3">
 					<SeedCollector />
 					{loadingPlaylist && (
 						<div className="my-5">
