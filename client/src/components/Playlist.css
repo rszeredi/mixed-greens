@@ -43,6 +43,12 @@
 	color: black;
 }
 
+.Playlist-table thead:hover * {
+	background-color: #191414;
+	color: white;
+	cursor: default;
+}
+
 .Playlist-artist {
 	color: #aaa;
 	font-size: 0.85rem;
