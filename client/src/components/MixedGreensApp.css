@@ -78,3 +78,10 @@ a.MixedGreensApp-navbar-item {
 		width: 80%;
 	}
 } */
+
+.MixedGreensApp-user-not-valid p {
+	color: white;
+	font-size: 1.4rem;
+	text-align: center;
+	margin: 0 0.8rem;
+}

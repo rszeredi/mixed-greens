@@ -12,7 +12,7 @@ import saladGif from '../salad.gif';
 import { useStateValue } from '../contexts/StateProvider';
 
 function MixedGreensApp() {
-	const [ { token, loadingPlaylist }, dispatch ] = useStateValue();
+	const [ { token, user, loadingPlaylist }, dispatch ] = useStateValue();
 
 	const handleLogOut = () => {
 		dispatch({ type: 'SET_IS_FIRST_USE' }); // so that we don't show the instructions anymore
@@ -53,7 +53,7 @@ function MixedGreensApp() {
 				</div>
 			</nav>
 
-			{token ? (
+			{token && user ? (
 				// <div className="MixedGreensApp d-flex flex-column align-items-center">
 				<Container
 					className="MixedGreensApp-container d-flex flex-column align-items-center py-3"
@@ -69,7 +69,9 @@ function MixedGreensApp() {
 					<Controls />
 				</Container>
 			) : (
-				<Login />
+				<div className="MixedGreensApp-user-not-valid d-flex align-items-center justify-content-center mt-5">
+					<p>Sorry! Your account is not registered for this app. Please contact Ria :)</p>
+				</div>
 			)}
 		</div>
 	);

@@ -4,7 +4,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const SpotifyWebApi = require('spotify-web-api-node');
 
-// REDIRECT_URI=https://rszeredi.github.io/mixed-greens
+const IN_DEV_MODE = process.argv[2] === 'dev';
+const REDIRECT_URI = IN_DEV_MODE
+	? 'http://localhost:3000'
+	: 'https://rszeredi.github.io/mixed-greens';
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -13,11 +16,11 @@ app.use(bodyParser.json());
 
 app.post('/login', (req, res) => {
 	const code = req.body.code;
-	console.log('code is: ', code);
-	// console.log('REDIRECT_URI: ', process.env.REDIRECT_URI);
+	// if (IN_DEV_MODE) console.log('CODE: ', code);
+	console.log('REDIRECT_URI: ', REDIRECT_URI);
 
 	const spotifyApi = new SpotifyWebApi({
-		redirectUri: process.env.REDIRECT_URI,
+		redirectUri: REDIRECT_URI,
 		clientId: process.env.CLIENT_ID,
 		clientSecret: process.env.CLIENT_SECRET
 	});
@@ -25,6 +28,7 @@ app.post('/login', (req, res) => {
 	spotifyApi
 		.authorizationCodeGrant(code)
 		.then((data) => {
+			console.log('Successfully logged in!');
 			res.json({
 				accessToken: data.body.access_token,
 				refreshToken: data.body.refresh_token,
@@ -32,15 +36,16 @@ app.post('/login', (req, res) => {
 			});
 		})
 		.catch((err) => {
-			console.log(err);
-			res.sendStatus(400);
+			// console.log('ERR: ', err);
+			console.log('error_description: ', err.body.error_description);
+			res.sendStatus(err.statusCode);
 		});
 });
 
 app.post('/refresh', (req, res) => {
 	const refreshToken = req.body.refreshToken;
 	const spotifyApi = new SpotifyWebApi({
-		redirectUri: process.env.REDIRECT_URI,
+		redirectUri: REDIRECT_URI,
 		clientId: process.env.CLIENT_ID,
 		clientSecret: process.env.CLIENT_SECRET,
 		refreshToken
@@ -59,8 +64,10 @@ app.post('/refresh', (req, res) => {
 				expiresIn: data.body.expires_in
 			});
 		})
-		.catch(() => {
-			res.sendStatus(400);
+		.catch((err) => {
+			// console.log('ERR: ', err);
+			console.log('error_description: ', err.body.error_description);
+			res.sendStatus(err.statusCode);
 		});
 });
 

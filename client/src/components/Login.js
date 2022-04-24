@@ -1,5 +1,5 @@
 import React from 'react';
-import { AUTH_URL, AUTH_URL_CODE } from '../util/spotify';
+import { AUTH_URL_CODE } from '../util/spotify';
 import { Container } from 'react-bootstrap';
 import spotifyLogo from '../app/Spotify_Logo_RGB_White.png';
 import './Login.css';

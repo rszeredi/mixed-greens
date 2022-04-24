@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const DEV_MODE = false;
+const DEV_MODE = process.env.NODE_ENV === 'development';
 const SERVER_URL = DEV_MODE ? 'http://localhost:3001' : 'https://mixed-greens-server.herokuapp.com';
 
 export default function useAuth(code) {
@@ -25,8 +25,8 @@ export default function useAuth(code) {
 					// setExpiresIn(61); // for testing
 				})
 				.catch((err) => {
-					console.log(err);
-					// window.location = '/';
+					console.log('/login error: ', err);
+					window.location = '/';
 				});
 		},
 		[ code ]
