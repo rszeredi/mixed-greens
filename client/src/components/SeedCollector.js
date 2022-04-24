@@ -48,6 +48,9 @@ function SeedCollector() {
 					console.log('Something went wrong!', err);
 				}
 			);
+
+		// start the playlist from the start
+		dispatch({ type: 'START_PLAYLIST_FROM_START' });
 	};
 
 	const deleteSeed = (id) => {

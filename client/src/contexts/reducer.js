@@ -81,6 +81,12 @@ const reducer = (state, action) => {
 				playlist: action.playlist
 			};
 
+		case 'START_PLAYLIST_FROM_START':
+			return {
+				...state,
+				playingTrackNumber: 0
+			};
+
 		case 'SET_PLAYING_TRACK_NUMBER':
 			return {
 				...state,
