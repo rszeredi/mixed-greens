@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Container, Form } from 'react-bootstrap';
 
 import { useStateValue } from '../contexts/StateProvider';
@@ -15,6 +15,9 @@ function SearchBar() {
 	const [ searchResultsGenres, setSearchResultsGenres ] = useState([]);
 	const [ searchResultsTracks, setSearchResultsTracks ] = useState([]);
 	const [ searchResultsCombined, setSearchResultsCombined ] = useState([]);
+
+	// create a ref to the dropdown so that we can reset the scroll on a new search
+	const dropdownRef = useRef(null);
 
 	useEffect(
 		() => {
@@ -82,6 +85,7 @@ function SearchBar() {
 
 	const handleChange = (e) => {
 		setSearch(e.target.value);
+		dropdownRef.current.scrollTop = 0; // reset to top
 	};
 
 	const handleSearchBarClick = (e) => {
@@ -111,7 +115,6 @@ function SearchBar() {
 		/>
 	));
 
-	console.log('>>>>SEEDS: ', seeds);
 	return (
 		<Container className="SearchBar d-flex flex-column p-0">
 			<div className={`dropdown ${showSearchDropDown ? 'is-active' : ''}`}>
@@ -123,7 +126,11 @@ function SearchBar() {
 					onChange={handleChange}
 					onClick={handleSearchBarClick}
 				/>
-				<div className="SearchBar-dropdown-menu dropdown-menu p-0" role="menu">
+				<div
+					ref={dropdownRef}
+					className="SearchBar-dropdown-menu dropdown-menu p-0"
+					role="menu"
+				>
 					<div className="dropdown-content">{dropdownItems}</div>
 				</div>
 			</div>

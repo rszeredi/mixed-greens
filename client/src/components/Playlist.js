@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Container } from 'react-bootstrap';
 
 import { useStateValue } from '../contexts/StateProvider';
@@ -10,17 +10,24 @@ function Playlist() {
 	console.log('playlist', playlist);
 
 	const playTrack = (trackNumber) => {
-		console.log('Will play track: ', trackNumber);
 		dispatch({ type: 'SET_PLAYING_TRACK_NUMBER', trackNumber: trackNumber });
 	};
 	const tracks = () =>
 		playlist.map((track) => <Track {...track} key={track.id} playTrack={playTrack} />);
 
-	// flex-grow-1
+	const playlistRef = useRef(null);
+	useEffect(
+		() => {
+			playlistRef.current.scrollTop = 0;
+		},
+		[ playlist ]
+	);
+
 	return (
 		<div
 			className={`Playlist my-5 align-items-center ${loadingPlaylist &&
 				'MixedGreensApp-hide'}`}
+			ref={playlistRef}
 		>
 			{playlist.length > 0 && (
 				// <table className="Playlist-table table table-striped">
