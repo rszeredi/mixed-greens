@@ -17,3 +17,6 @@ Pandora-style playlists, but using Spotify's recommendation algorithm. In this a
 ## Demo
 https://user-images.githubusercontent.com/11175618/164957713-fccc4004-7989-4b7b-aad1-2b21ca10f697.mov
 
+## Project Status
+- This app is mostly complete, but could do with some extra features, such as the ability to save the generated playlist
+- Other improvements: clean up the Context to include fewer state variables (and so avoid unnecessary re-renders)
