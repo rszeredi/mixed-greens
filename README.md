@@ -1,6 +1,8 @@
 # Mixed Greens
 
-[🔗 Try out the app here!](https://rszeredi.github.io/mixed-greens)
+[🔗 Try out the app here!](https://rszeredi.github.io/mixed-greens)  
+
+**Note:** As this app is still in Spotify's [Development Mode](https://developer.spotify.com/documentation/web-api/guides/development-extended-quota-modes/), let me know if you'd like to be added to the allowlist. Alternatively, I've included a demo video below :)
 
 ## About this project
 Pandora-style playlists, but using Spotify's recommendation algorithm. In this app you can select songs, artists and genres and let Spotify generate a playlist for you.
